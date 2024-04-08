@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание уроков</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color: #f4f4f4; */
+            background: linear-gradient(45deg, #1e1e1e, #750000);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .schedule {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule">
+        <h1>Расписание уроков</h1>
+        <div id="schedule-info"></div>
+    </div>
+
+    <script>
+        // Расписание уроков
+        const schedule = {
+            "понедельник": [
+                { "lesson": "Мистецтво", "start": "17:00", "duration": 40 },
+                { "lesson": "Физика", "start": "17:50", "duration": 40 },
+                { "lesson": "Алгебра", "start": "18:40", "duration": 40 },
+                { "lesson": "Громад освита", "start": "19:30", "duration": 40 },
+                { "lesson": "Укр мова", "start": "20:25", "duration": 40 },
+                { "lesson": "Алгебра", "start": "21:15", "duration": 40 },
+                { "lesson": "Физ-ра", "start": "22:00", "duration": 40 }
+            ],
+            "вторник": [
+                { "lesson": "Алгебра", "start": "17:00", "duration": 40 },
+                { "lesson": "Алгебра", "start": "17:50", "duration": 40 },
+                { "lesson": "География", "start": "18:40", "duration": 40 },
+                { "lesson": "Зар лит", "start": "19:30", "duration": 40 },
+                { "lesson": "Англ мова", "start": "20:25", "duration": 40 },
+                { "lesson": "Физика", "start": "21:15", "duration": 40 },
+                { "lesson": "Физ-ра", "start": "22:00", "duration": 40 }
+            ],
+            "среда": [
+                { "lesson": "Алгебра", "start": "17:00", "duration": 40 },
+                { "lesson": "Истор Украины", "start": "17:50", "duration": 40 },
+                { "lesson": "Громад освита", "start": "18:40", "duration": 40 },
+                { "lesson": "Физика", "start": "19:30", "duration": 40 },
+                { "lesson": "Алгебра", "start": "20:25", "duration": 40 },
+                { "lesson": "Укр лит", "start": "21:15", "duration": 40 },
+                { "lesson": "Истор Укр", "start": "22:00", "duration": 40 }
+            ],
+            "четверг": [
+                { "lesson": "Укр мова", "start": "17:00", "duration": 40 },
+                { "lesson": "История", "start": "17:50", "duration": 40 },
+                { "lesson": "Химия", "start": "18:40", "duration": 40 },
+                { "lesson": "Геометрия", "start": "19:30", "duration": 40 },
+                { "lesson": "Биология", "start": "20:25", "duration": 40 },
+                { "lesson": "Укр лит", "start": "21:15", "duration": 40 },
+                { "lesson": "Физ-ра", "start": "22:00", "duration": 40 }
+            ],
+            "пятница": [
+                { "lesson": "Геометрия", "start": "17:00", "duration": 40 },
+                { "lesson": "Геометрия", "start": "17:50", "duration": 40 },
+                { "lesson": "Биология", "start": "18:40", "duration": 40 },
+                { "lesson": "Англ мова", "start": "19:30", "duration": 40 },
+                { "lesson": "УПК", "start": "21:15", "duration": 40 },
+                { "lesson": "УПК", "start": "22:00", "duration": 40 }
+            ]
+        };
+
+        // Функция для получения текущего времени
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+
+        // Функция для определения текущего дня недели
+        function getCurrentDay() {
+            const daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+            const now = new Date();
+            return daysOfWeek[now.getDay()];
+        }
+
+        // Функция для вывода расписания на экран
+        function displaySchedule() {
+            const currentDay = getCurrentDay().toLowerCase();
+            const currentTime = getCurrentTime();
+
+            const scheduleInfo = document.getElementById('schedule-info');
+            scheduleInfo.innerHTML = '';
+
+            if (schedule.hasOwnProperty(currentDay)) {
+                const currentLessons = schedule[currentDay];
+                let currentLesson = null;
+                let nextLesson = null;
+
+                for (const lesson of currentLessons) {
+                    if (lesson.start <= currentTime && currentTime < addMinutes(lesson.start, lesson.duration)) {
+                        currentLesson = lesson;
+                        break;
+                    }
+                }
+
+                if (!currentLesson) {
+                    for (const lesson of currentLessons) {
+                        if (currentTime < lesson.start) {
+                            nextLesson = lesson;
+                            break;
+                        }
+                    }
+                }
+
+                if (currentLesson) {
+    const lessonEnd = addMinutes(currentLesson.start, currentLesson.duration);
+    const timeLeft = timeDifference(currentTime, lessonEnd);
+    scheduleInfo.innerHTML += `<p>Текущий урок: ${currentLesson.lesson}</p>`;
+    scheduleInfo.innerHTML += `<p>До конца урока: ${timeLeft}</p>`;
+    const nextIndex = currentLessons.indexOf(currentLesson) + 1;
+    if (nextIndex < currentLessons.length) {
+        const nextLesson = currentLessons[nextIndex];
+        scheduleInfo.innerHTML += `<p>Следующий урок: ${nextLesson.lesson}</p>`;
+    }
+}
+ else if (nextLesson) {
+                    const timeLeft = timeDifference(currentTime, nextLesson.start);
+                    scheduleInfo.innerHTML += `<p>Следующий урок: ${nextLesson.lesson}</p>`;
+                    scheduleInfo.innerHTML += `<p>До начала урока: ${timeLeft}</p>`;
+                } else {
+                    scheduleInfo.innerHTML += `<p>Все уроки на сегодня уже прошли.</p>`;
+                }
+            } else {
+                scheduleInfo.innerHTML += `<p>Сегодня нет занятий.</p>`;
+            }
+        }
+
+        // Функция для добавления минут к времени
+        function addMinutes(time, minutes) {
+            const [hours, mins] = time.split(':').map(Number);
+            const totalMins = hours * 60 + mins + minutes;
+            const newHours = Math.floor(totalMins / 60) % 24;
+            const newMins = totalMins % 60;
+            return `${newHours.toString().padStart(2, '0')}:${newMins.toString().padStart(2, '0')}`;
+        }
+
+        // Функция для вычисления разницы во времени
+        function timeDifference(startTime, endTime) {
+            const start = new Date(`2020-01-01T${startTime}`);
+            const end = new Date(`2020-01-01T${endTime}`);
+            const diffMs = end - start;
+            const diffMinutes = Math.floor(diffMs / 60000);
+            const hours = Math.floor(diffMinutes / 60);
+            const minutes = diffMinutes % 60;
+            return `${hours} часов ${minutes} минут`;
+        }
+
+        // Обновление расписания каждые 10 секунд
+        displaySchedule();
+        setInterval(displaySchedule, 10000);
+    </script>
+</body>
+</html>
