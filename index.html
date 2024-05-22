@@ -32,14 +32,10 @@
 </main>
 
 <script>
-    let count = parseInt(localStorage.getItem('coinCount')) || 0;
+    let count = 0;
     const circle = document.querySelector('.circle');
     const counter = document.querySelector('.counter');
     const progressBar = document.querySelector('.progress-bar');
-
-    // Инициализируем счетчик и прогресс бар
-    counter.textContent = count;
-    progressBar.style.width = Math.min(count / 1000 * 100, 100) + '%';
 
     circle.addEventListener('mousedown', (e) => {
         count++;
@@ -48,9 +44,6 @@
         // Обновление прогресс-бара
         const progress = Math.min(count / 1000 * 100, 100);
         progressBar.style.width = progress + '%';
-
-        // Сохраняем новое значение в localStorage
-        localStorage.setItem('coinCount', count);
 
         // Создаем элемент +1
         const number = document.createElement('div');
