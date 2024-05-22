@@ -67,7 +67,7 @@ main{
 }
 .number {
     position: absolute;
-    font-size: 24px;
+    font-size: 4vh;
     color: #fff;
     pointer-events: none;
     animation: flyUp 1s ease-out forwards;
