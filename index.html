@@ -49,6 +49,8 @@
         <img src="https://cdn.discordapp.com/attachments/1058800929962475531/1243050500010545163/pngwing.com_1.png?ex=6650107d&is=664ebefd&hm=942f51797277c7dee1b22601802d19c415b1a96e6c5b1c17788f0489d1747d8a&" id="burger" alt="Хомяк">
         </div>
     </div>
+    <!-- Добавляем кнопку сброса -->
+    <button class="reset-button">Вывести</button>
 </div>
 </main>
 
@@ -57,6 +59,7 @@
     const circle = document.querySelector('.circle');
     const counter = document.querySelector('.counter');
     const progressBar = document.querySelector('.progress-bar');
+    const resetButton = document.querySelector('.reset-button');
 
     // Инициализируем счетчик и прогресс бар
     counter.textContent = count;
@@ -91,6 +94,13 @@
         setTimeout(() => {
             circle.style.transform = 'scale(1)';
         }, 200); // Плавный возврат через 200ms
+    });
+
+    resetButton.addEventListener('click', () => {
+        count = 0;
+        counter.textContent = count;
+        progressBar.style.width = '0%';
+        localStorage.setItem('coinCount', count);
     });
 </script>
 
