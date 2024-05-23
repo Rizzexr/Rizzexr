@@ -1,108 +1,189 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://cdn.discordapp.com/attachments/1058800929962475531/1242847917807501484/begaburger.png?ex=664f53d2&is=664e0252&hm=d541b965852e1dfca9b79ad151e3cc29dddc24624afad148e725b66b87a798cb&">
-    <title>Minion Kombat</title>
+    <title>Cryptocurrency Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #00e676;
+            margin: 10px 0;
+        }
+
+        .chartContainer {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<header>
-    <!-- <h3>Burger Kombat</h3> -->
-    <!-- <h4>powered by Ivan Presnyakov</h4> -->
-    <img src="https://cdn.discordapp.com/attachments/1058800929962475531/1242907648677118032/burger-food_884653-6887.jpg?ex=664f8b73&is=664e39f3&hm=391f2b8e0054090cf92b459d3304467c7f9baa086729e7b619d995bc524781c5&" id="logob">
-    <h3>(CEO)</h3>
-    <img src="https://public.bnbstatic.com/20190405/eb2349c3-b2f8-4a93-a286-8f86a62ea9d8.png" id="benance">
-</header>
-<main>
-<div class="container">
-    <div class="data">
-        <div class="cube">
-            <h1 id="f">Прибль за тап</h1>
-            <h2>+1</h2>
-        </div>
-        <div class="cube">
-            <h1 id="s">Монет для апа</h1>
-            <h2>1000</h2>
-        </div>
-        <div class="cube">
-            <h1 id="t">Прибыль в час</h1>
-            <h2>+1</h2>
+    <h1>Cryptocurrency Tracker</h1>
+    <div id="btcContainer" class="container">
+        <h2>Bitcoin (BTC)</h2>
+        <div id="btcPrice" class="price">Loading...</div>
+        <div class="chartContainer">
+            <canvas id="btcChart"></canvas>
         </div>
     </div>
-    <div class="line1">
-        <img src="https://cdn.discordapp.com/attachments/1058800929962475531/1242851085975293982/coin-dollar_115160.png?ex=664f56c5&is=664e0545&hm=06ec8dfe5f4b6cfd1331877c8de185646dd0491f84dbe6c604e8792f7f49d90c&" id="coin">
-        <div class="counter">0</div>
-    </div>
-    <div class="progress-container">
-        <div class="progress">
-            <div class="progress-bar"></div>
-        </div>
-        <div class="progress-label">
-            <span>silver</span>
-            <span>gold</span>
+    <div id="ethContainer" class="container">
+        <h2>Ethereum (ETH)</h2>
+        <div id="ethPrice" class="price">Loading...</div>
+        <div class="chartContainer">
+            <canvas id="ethChart"></canvas>
         </div>
     </div>
-    <div class="circle">
-        <div class="circle2">
-        <img src="https://cdn.discordapp.com/attachments/1058800929962475531/1243050500010545163/pngwing.com_1.png?ex=6650107d&is=664ebefd&hm=942f51797277c7dee1b22601802d19c415b1a96e6c5b1c17788f0489d1747d8a&" id="burger" alt="Хомяк">
+    <div id="tonContainer" class="container">
+        <h2>Toncoin (TON)</h2>
+        <div id="tonPrice" class="price">Loading...</div>
+        <div class="chartContainer">
+            <canvas id="tonChart"></canvas>
         </div>
     </div>
-    <!-- Добавляем кнопку сброса -->
-    <button class="reset-button">Вывести</button>
-</div>
-</main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const priceElements = {
+                btc: document.getElementById('btcPrice'),
+                eth: document.getElementById('ethPrice'),
+                ton: document.getElementById('tonPrice')
+            };
 
-<script>
-    let count = parseInt(localStorage.getItem('coinCount')) || 0;
-    const circle = document.querySelector('.circle');
-    const counter = document.querySelector('.counter');
-    const progressBar = document.querySelector('.progress-bar');
-    const resetButton = document.querySelector('.reset-button');
+            const chartContexts = {
+                btc: document.getElementById('btcChart').getContext('2d'),
+                eth: document.getElementById('ethChart').getContext('2d'),
+                ton: document.getElementById('tonChart').getContext('2d')
+            };
 
-    // Инициализируем счетчик и прогресс бар
-    counter.textContent = count;
-    progressBar.style.width = Math.min(count / 1000 * 100, 100) + '%';
+            const charts = {};
 
-    circle.addEventListener('mousedown', (e) => {
-        count++;
-        counter.textContent = count;
+            const fetchPrice = (cryptoId, priceElement) => {
+                fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=usd`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const price = data[cryptoId].usd;
+                        priceElement.textContent = `$${price}`;
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching the ${cryptoId} price:`, error);
+                        priceElement.textContent = 'Error fetching price';
+                    });
+            };
 
-        // Обновление прогресс-бара
-        const progress = Math.min(count / 1000 * 100, 100);
-        progressBar.style.width = progress + '%';
+            const fetchPriceHistory = (cryptoId, chartContext) => {
+                fetch(`https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart?vs_currency=usd&days=1`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const prices = data.prices;
+                        const labels = prices.map(price => {
+                            const date = new Date(price[0]);
+                            return `${date.getHours()}:${date.getMinutes()}`;
+                        });
+                        const priceData = prices.map(price => price[1]);
 
-        // Сохраняем новое значение в localStorage
-        localStorage.setItem('coinCount', count);
+                        if (charts[cryptoId]) {
+                            charts[cryptoId].destroy();
+                        }
 
-        // Создаем элемент +1
-        const number = document.createElement('div');
-        number.className = 'number';
-        number.textContent = '+1';
-        number.style.left = `${e.offsetX}px`;
-        number.style.top = `${e.offsetY}px`;
-        circle.appendChild(number);
+                        charts[cryptoId] = new Chart(chartContext, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Price (USD)',
+                                    data: priceData,
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderWidth: 1,
+                                    fill: true,
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    x: {
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Time',
+                                            color: '#e0e0e0',
+                                        },
+                                        ticks: {
+                                            color: '#e0e0e0'
+                                        }
+                                    },
+                                    y: {
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Price in USD',
+                                            color: '#e0e0e0',
+                                        },
+                                        ticks: {
+                                            color: '#e0e0e0'
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        labels: {
+                                            color: '#e0e0e0'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching the ${cryptoId} price history:`, error);
+                    });
+            };
 
-        // Удаляем элемент +1 после анимации
-        number.addEventListener('animationend', () => {
-            number.remove();
+            const updatePricesAndCharts = () => {
+                fetchPrice('bitcoin', priceElements.btc);
+                fetchPrice('ethereum', priceElements.eth);
+                fetchPrice('toncoin', priceElements.ton);
+
+                fetchPriceHistory('bitcoin', chartContexts.btc);
+                fetchPriceHistory('ethereum', chartContexts.eth);
+                fetchPriceHistory('toncoin', chartContexts.ton);
+            };
+
+            updatePricesAndCharts();
+            setInterval(updatePricesAndCharts, 60000); // Обновление данных каждые 60 секунд
         });
-
-        // Эффект дергания
-        circle.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            circle.style.transform = 'scale(1)';
-        }, 200); // Плавный возврат через 200ms
-    });
-
-    resetButton.addEventListener('click', () => {
-        count = 0;
-        counter.textContent = count;
-        progressBar.style.width = '0%';
-        localStorage.setItem('coinCount', count);
-    });
-</script>
-
+    </script>
 </body>
 </html>
