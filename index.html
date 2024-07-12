@@ -3,187 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryptocurrency Tracker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            margin-bottom: 20px;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #ffcc00;
-        }
-
-        .price {
-            font-size: 1.5em;
-            color: #00e676;
-            margin: 10px 0;
-        }
-
-        .chartContainer {
-            width: 100%;
-            max-width: 600px;
-        }
-
-        canvas {
-            width: 100% !important;
-            height: auto !important;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Сайт для чата в Viber</title>
 </head>
 <body>
-    <h1>Cryptocurrency Tracker</h1>
-    <div id="btcContainer" class="container">
-        <h2>Bitcoin (BTC)</h2>
-        <div id="btcPrice" class="price">Loading...</div>
-        <div class="chartContainer">
-            <canvas id="btcChart"></canvas>
-        </div>
-    </div>
-    <div id="ethContainer" class="container">
-        <h2>Ethereum (ETH)</h2>
-        <div id="ethPrice" class="price">Loading...</div>
-        <div class="chartContainer">
-            <canvas id="ethChart"></canvas>
-        </div>
-    </div>
-    <div id="tonContainer" class="container">
-        <h2>Toncoin (TON)</h2>
-        <div id="tonPrice" class="price">Loading...</div>
-        <div class="chartContainer">
-            <canvas id="tonChart"></canvas>
-        </div>
-    </div>
+    <h1>Начать чат в Viber</h1>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const priceElements = {
-                btc: document.getElementById('btcPrice'),
-                eth: document.getElementById('ethPrice'),
-                ton: document.getElementById('tonPrice')
-            };
+        // Функция для получения параметра из URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
 
-            const chartContexts = {
-                btc: document.getElementById('btcChart').getContext('2d'),
-                eth: document.getElementById('ethChart').getContext('2d'),
-                ton: document.getElementById('tonChart').getContext('2d')
-            };
+        // Получаем номер телефона из URL
+        var phoneNumber = getParameterByName('phone');
 
-            const charts = {};
+        // Формируем ссылку на чат в Viber с полученным номером
+        var viberLink = "viber://chat?number=" + phoneNumber;
 
-            const fetchPrice = (cryptoId, priceElement) => {
-                fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=usd`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const price = data[cryptoId].usd;
-                        priceElement.textContent = `$${price}`;
-                    })
-                    .catch(error => {
-                        console.error(`Error fetching the ${cryptoId} price:`, error);
-                        priceElement.textContent = 'Error fetching price';
-                    });
-            };
+        // Создаем ссылку на чат в Viber
+        var viberButton = document.createElement("a");
+        viberButton.href = viberLink;
+        viberButton.textContent = "Начать чат в Viber";
 
-            const fetchPriceHistory = (cryptoId, chartContext) => {
-                fetch(`https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart?vs_currency=usd&days=1`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const prices = data.prices;
-                        const labels = prices.map(price => {
-                            const date = new Date(price[0]);
-                            return `${date.getHours()}:${date.getMinutes()}`;
-                        });
-                        const priceData = prices.map(price => price[1]);
-
-                        if (charts[cryptoId]) {
-                            charts[cryptoId].destroy();
-                        }
-
-                        charts[cryptoId] = new Chart(chartContext, {
-                            type: 'line',
-                            data: {
-                                labels: labels,
-                                datasets: [{
-                                    label: 'Price (USD)',
-                                    data: priceData,
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                    borderWidth: 1,
-                                    fill: true,
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    x: {
-                                        display: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Time',
-                                            color: '#e0e0e0',
-                                        },
-                                        ticks: {
-                                            color: '#e0e0e0'
-                                        }
-                                    },
-                                    y: {
-                                        display: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Price in USD',
-                                            color: '#e0e0e0',
-                                        },
-                                        ticks: {
-                                            color: '#e0e0e0'
-                                        }
-                                    }
-                                },
-                                plugins: {
-                                    legend: {
-                                        labels: {
-                                            color: '#e0e0e0'
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    })
-                    .catch(error => {
-                        console.error(`Error fetching the ${cryptoId} price history:`, error);
-                    });
-            };
-
-            const updatePricesAndCharts = () => {
-                fetchPrice('bitcoin', priceElements.btc);
-                fetchPrice('ethereum', priceElements.eth);
-                fetchPrice('toncoin', priceElements.ton);
-
-                fetchPriceHistory('bitcoin', chartContexts.btc);
-                fetchPriceHistory('ethereum', chartContexts.eth);
-                fetchPriceHistory('toncoin', chartContexts.ton);
-            };
-
-            updatePricesAndCharts();
-            setInterval(updatePricesAndCharts, 60000); // Обновление данных каждые 60 секунд
-        });
+        // Добавляем ссылку на страницу
+        document.body.appendChild(viberButton);
     </script>
 </body>
 </html>
