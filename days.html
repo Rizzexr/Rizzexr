@@ -9,17 +9,19 @@
 <body>
     <a href="index.html" id="back">Назад</a>
     <main>
-        <div class="line_days">
-            <div class="square" id="day1"><h2>Пн</h2></div>
-            <div class="square" id="day2"><h2>Вт</h2></div>
-            <div class="square" id="day3"><h2>Ср</h2></div>
-            <div class="square" id="day4"><h2>Чт</h2></div>
-            <div class="square" id="day5"><h2>Пт</h2></div>
-            <div class="square" id="day6"><h2>Сб</h2></div>
-            <div class="square" id="day7"><h2>Вс</h2></div>
-        </div>
         <div class="day_line">
-            <div class="block">
+            <div class="block" id="day1">
+                <h6>Понедельник</h6>
+                <h3>1.</h3>
+                <h3>2.</h3>
+                <h3>3.</h3>
+                <h3>4.</h3>
+                <h3>5.</h3>
+                <h3>6.</h3>
+                <h3>7.</h3>
+            </div>
+            <div class="block" id="day2">
+                <h6>Вторник</h6>
                 <h3>1.Математика</h3>
                 <h3>2.Математика</h3>
                 <h3>3.Химия</h3>
@@ -28,11 +30,41 @@
                 <h3>6.Физика</h3>
                 <h3>7.Информатика</h3>
             </div>
+            <div class="block" id="day3">
+                <h6>Среда</h6>
+                <h3>1.</h3>
+                <h3>2.</h3>
+                <h3>3.</h3>
+                <h3>4.</h3>
+                <h3>5.</h3>
+                <h3>6.</h3>
+                <h3>7.</h3>
+            </div>
+            <div class="block" id="day4">
+                <h6>Четверг</h6>
+                <h3>1.</h3>
+                <h3>2.</h3>
+                <h3>3.</h3>
+                <h3>4.</h3>
+                <h3>5.</h3>
+                <h3>6.</h3>
+                <h3>7.</h3>
+            </div>
+            <div class="block" id="day5">
+                <h6>Пятница</h6>
+                <h3>1.</h3>
+                <h3>2.</h3>
+                <h3>3.</h3>
+                <h3>4.</h3>
+                <h3>5.</h3>
+                <h3>6.</h3>
+                <h3>7.</h3>
+            </div>
         </div>
         <p>by Ivan Presnyakov</p>
     </main>
     <script>
-        const squares = document.querySelectorAll('.square');
+        const squares = document.querySelectorAll('.block');
 
         // Получаем текущий день недели (0 - воскресенье, 6 - суббота)
         const currentDay = new Date().getDay();

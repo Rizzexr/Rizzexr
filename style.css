@@ -73,8 +73,9 @@ p{
 }
 
 .active {
-    background: #00ff15;
-    color: #000;
+    /* background: #00ff15; */
+    /* color: #000; */
+    border-bottom: solid #00ff15 1vh;
 }
 .day_line{
     display: flex;
@@ -90,6 +91,10 @@ p{
     padding: 2vh;
     background: #3d3d3d;
     border-radius: 2vh;
+    margin-left: 2.5vh;
+    margin-right: 2.5vh;
+
+    width: 20vh;
 }
 .block_line{
     display: flex;
@@ -167,4 +172,10 @@ h4{
 }
 #upper{
     margin-top: 5vh;
+}
+h6{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #ff3b3b;
+    font-size: 2vh;
 }
