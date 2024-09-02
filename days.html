@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>11Б</title>
+</head>
+<body>
+    <a href="index.html" id="back">Назад</a>
+    <main>
+        <div class="line_days">
+            <div class="square" id="day1"><h2>Пн</h2></div>
+            <div class="square" id="day2"><h2>Вт</h2></div>
+            <div class="square" id="day3"><h2>Ср</h2></div>
+            <div class="square" id="day4"><h2>Чт</h2></div>
+            <div class="square" id="day5"><h2>Пт</h2></div>
+            <div class="square" id="day6"><h2>Сб</h2></div>
+            <div class="square" id="day7"><h2>Вс</h2></div>
+        </div>
+        <div class="day_line">
+            <div class="block">
+                <h3>1.Математика</h3>
+                <h3>2.Математика</h3>
+                <h3>3.Химия</h3>
+                <h3>4.География</h3>
+                <h3>5.Физ-ра</h3>
+                <h3>6.Физика</h3>
+                <h3>7.Информатика</h3>
+            </div>
+        </div>
+        <p>by Ivan Presnyakov</p>
+    </main>
+    <script>
+        const squares = document.querySelectorAll('.square');
+
+        // Получаем текущий день недели (0 - воскресенье, 6 - суббота)
+        const currentDay = new Date().getDay();
+
+        // Преобразуем его, чтобы Понедельник был 1, а Воскресенье — 7
+        const dayIndex = currentDay === 0 ? 7 : currentDay;
+
+        // Подсвечиваем соответствующий квадрат
+        document.getElementById(`day${dayIndex}`).classList.add('active');
+
+    </script>
+</body>
+</html>

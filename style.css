@@ -1,0 +1,170 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('fonts/MultiroundPro/MultiroundPro.otf') format('opentype');
+}
+@font-face {
+    font-family: 'MUNICH';
+    src: url('fonts/MUNICH\ SANS.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(90deg, #1a1a1a, #2b2b2b, #333);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+h1{
+    color: #fff;
+    font-family: 'MyCustomFont', sans-serif;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    border-radius: 5vh;
+    font-size: 5vh;
+    width: 50vh;
+    text-align: center;
+
+    padding: 3vh;
+
+    margin-top: 5vh;
+
+    margin-right: 5vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+h1:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+p{
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+}
+.line_days{
+    display: flex;
+    justify-content: center;flex-direction: row;
+    align-items: center;
+}
+.square {
+    width: 5vh;
+    height: 5vh;
+    margin: 2vh;
+    background-color: gray;
+    display: inline-block;
+    border-radius: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'MUNICH', sans-serif;
+}
+
+.active {
+    background: #00ff15;
+    color: #000;
+}
+.day_line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.block{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2vh;
+    background: #3d3d3d;
+    border-radius: 2vh;
+}
+.block_line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+h3{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+}
+#back{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    color: white;
+    padding: 1vh;
+    z-index: 1000; /* Чтобы он был поверх других элементов */
+    margin: 5vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+#back:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+.lesson{
+    background: linear-gradient(135deg, #4d4d4d, #00ff15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 2vh;
+    margin-top: 5vh;
+}
+h5{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 3vh;
+    width: 20vh;
+}
+#link{
+    background: #3d3d3d;
+    border-radius: 1vh;
+    padding: 1vh;
+    font-size: 3vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    width: 10vh;
+    text-align: center;
+    margin-right: 5vh;
+}
+h4{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 3vh;
+    width: 20vh;
+}
+#upper{
+    margin-top: 5vh;
+}
