@@ -201,3 +201,8 @@ h6{
     color: #ff3b3b;
     font-size: 2vh;
 }
+a:focus, a:active {
+    outline: none;
+    color: inherit; /* Опционально: сохранит исходный цвет текста */
+  }
+  
