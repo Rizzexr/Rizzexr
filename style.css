@@ -208,3 +208,6 @@ h6{
     width: 10vh;
     margin: 0;
 }
+#new{
+    background: linear-gradient(135deg, #4d4d4d, #a94dff);
+}
