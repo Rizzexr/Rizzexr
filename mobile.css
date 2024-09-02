@@ -1,0 +1,203 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('fonts/MultiroundPro/MultiroundPro.otf') format('opentype');
+}
+@font-face {
+    font-family: 'MUNICH';
+    src: url('fonts/MUNICH\ SANS.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(90deg, #1a1a1a, #2b2b2b, #333);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: center;
+}
+a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: center;
+}
+h1{
+    color: #fff;
+    font-family: 'MyCustomFont', sans-serif;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    border-radius: 5vh;
+    font-size: 4vh;
+    width: 30vh;
+    text-align: center;
+
+    padding: 3vh;
+
+    margin-top: 5vh;
+
+    margin-right: 5vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-left: 5vh;
+}
+p{
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+}
+.line_days{
+    display: flex;
+    justify-content: center;flex-direction: row;
+    align-items: center;
+}
+.square {
+    width: 5vh;
+    height: 5vh;
+    margin: 2vh;
+    background-color: gray;
+    display: inline-block;
+    border-radius: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'MUNICH', sans-serif;
+}
+
+.active {
+    /* background: #00ff15; */
+    /* color: #000; */
+    border-bottom: solid #00ff15 1vh;
+}
+.day_line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.block{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2vh;
+    background: #3d3d3d;
+    border-radius: 2vh;
+    /* margin-left: 2.5vh; */
+    /* margin-right: 2.5vh; */
+    margin-top: 5vh;
+
+    width: 20vh;
+}
+.block_line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+h3{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+}
+#back{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    width: 15vh;
+    height: 7vh;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    color: white;
+    padding: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    margin-top: 27.5vh;
+}
+#back_two{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    width: 15vh;
+    height: 7vh;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    color: white;
+    padding: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    margin-top: 150vh;
+}
+.lesson{
+    background: linear-gradient(135deg, #4d4d4d, #00ff15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 2vh;
+    margin-top: 5vh;
+    width: 35vh;
+}
+.lesson_line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+h5{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 3vh;
+    width: 20vh;
+}
+#link{
+    background: #3d3d3d;
+    border-radius: 1vh;
+    padding: 1vh;
+    font-size: 3vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    width: 10vh;
+    text-align: center;
+    margin-right: 5vh;
+}
+h4{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 3vh;
+    width: 15vh;
+}
+#upper{
+    margin-top: 5vh;
+}
+h6{
+    margin: 1vh;
+    font-family: 'MUNICH', sans-serif;
+    color: #ff3b3b;
+    font-size: 2vh;
+}
