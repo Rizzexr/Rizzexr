@@ -148,6 +148,25 @@ h3{
 
     margin-top: 150vh;
 }
+#back_three{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    width: 15vh;
+    height: 7vh;
+    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    color: white;
+    padding: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    /* margin-top: 20vh; */
+}
 .lesson{
     background: linear-gradient(135deg, #4d4d4d, #00ff15);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -236,4 +255,7 @@ a:focus, a:active {
 }
 #new{
     background: linear-gradient(135deg, #4d4d4d, #a94dff);
+}
+#green{
+    background: linear-gradient(135deg, #4d4d4d, #00ff15);
 }
