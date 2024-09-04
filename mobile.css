@@ -54,6 +54,7 @@ h1{
     margin-right: 5vh;
 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 p{
     font-family: 'MUNICH', sans-serif;
