@@ -305,3 +305,12 @@ h6{
     pointer-events: none;
     font-family: 'MyCustomFont', sans-serif;
 }
+.book{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#up{
+    margin-top: 100vh;
+}
