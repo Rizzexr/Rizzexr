@@ -34,21 +34,26 @@ a{
     align-self: center;
 }
 h1{
+    font-size: 4vh;
     color: #fff;
     font-family: 'MyCustomFont', sans-serif;
-    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
-    border-radius: 5vh;
-    font-size: 4vh;
+    /* background: linear-gradient(90deg, #313049, #212136); */
+    /* background: #a3a3a3; */
+    background: rgba(0, 0, 0, 0.3);
+
+    border-radius: 0.8vh;
+    /* border: solid #a3a3a3 0.3vh; */
+
+    /* font-size: 5vh; */
     width: 30vh;
+
     text-align: center;
-
     padding: 3vh;
-
     margin-top: 5vh;
-
-    margin-right: 5vh;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     margin-left: 5vh;
+    margin-right: 5vh;
+
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 p{
     font-family: 'MUNICH', sans-serif;
@@ -91,7 +96,7 @@ p{
     align-items: flex-start;
     flex-direction: column;
     padding: 2vh;
-    background: #3d3d3d;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 2vh;
     /* margin-left: 2.5vh; */
     /* margin-right: 2.5vh; */
@@ -117,7 +122,7 @@ h3{
     font-size: 4vh;
     width: 15vh;
     height: 7vh;
-    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    background: #ff4d4d;
     color: white;
     padding: 1vh;
 
@@ -136,7 +141,7 @@ h3{
     font-size: 4vh;
     width: 15vh;
     height: 7vh;
-    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    background: #ff4d4d;
     color: white;
     padding: 1vh;
 
@@ -155,7 +160,7 @@ h3{
     font-size: 4vh;
     width: 15vh;
     height: 7vh;
-    background: linear-gradient(135deg, #4d4d4d, #ff4d4d);
+    background: #ff4d4d;
     color: white;
     padding: 1vh;
 
@@ -254,8 +259,9 @@ a:focus, a:active {
     margin: 0;
 }
 #new{
-    background: linear-gradient(135deg, #4d4d4d, #a94dff);
+    background: linear-gradient(90deg, #ee09ba, #a242e6, #6030dd);
+    border: none;
 }
-#green{
+/* #green{
     background: linear-gradient(135deg, #4d4d4d, #00ff15);
-}
+} */
