@@ -15,4 +15,7 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
+Сайт написан dev Иван Пресняков
+Специально для участников 11Б класса
+
 version 1.0.3

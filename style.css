@@ -277,3 +277,31 @@ h6{
 
     background: #333333;
 }
+#clock {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 0 0 10px 10px;
+    font-size: 2rem;
+    z-index: 1000;
+    pointer-events: none;
+    font-family: 'MyCustomFont', sans-serif;
+    color: #fff;
+}
+#schedule {
+    color: #fff;
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    z-index: 1000;
+    pointer-events: none;
+    font-family: 'MyCustomFont', sans-serif;
+}
