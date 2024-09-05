@@ -25,7 +25,7 @@
             {start: "10:30", end: "11:10"},
             {start: "11:25", end: "12:05"},
             {start: "12:15", end: "12:55"},
-            {start: "13:00", end: "21:40"}
+            {start: "13:00", end: "13:40"}
         ];
     
         function pad(num) {
@@ -55,7 +55,7 @@
     
             // Проверяем, начался ли учебный день (с 7:50 до окончания последнего урока)
             const startDay = "07:50";
-            const endDay = "21:40";
+            const endDay = "13:50";
             if (nowTime < startDay || nowTime > endDay) {
                 document.getElementById('schedule').textContent = 'чезабретто';
                 return;
@@ -76,7 +76,7 @@
                 // Если текущее время в пределах перемены перед уроком
                 if (i < lessons.length - 1 && nowTime > lessonEnd && nowTime < lessons[i + 1].start) {
                     const remainingTime = getTimeRemaining(lessons[i + 1].start);
-                    document.getElementById('schedule').textContent = `Перемена. До начала урока ${i + 2}: ${remainingTime}`;
+                    document.getElementById('schedule').textContent = `Урок через ${i + 2}: ${remainingTime}`;
                     return;
                 }
             }

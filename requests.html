@@ -8,6 +8,18 @@
     <title>11Б</title>
 </head>
 <body>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Внимание</h2>
+                <span class="close-btn" id="closeBtn">&times;</span>
+            </div>
+            <div class="popup-body">
+                <p>После стабильного расписания порядок учебников будет изменен в соответствии с частотой использования</p>
+            </div>
+        </div>
+    </div>
+
     <a href="index.html" id="back">Назад</a>
     <main id="for_book">
         <div class="book" id="up">
@@ -22,7 +34,26 @@
             <h4>Английский</h4>
             <iframe sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups" allowfullscreen="true" style="border:none;width:50vh;height:750px;" src="https://e.issuu.com/embed.html?d=11-klas-anglijska-mova-karpjuk-2019&amp;pageLayout=singlePage&amp;u=stankobog"></iframe>
         </div>
+        <div class="book">
+            <h4>Укр мова</h4>
+            <iframe sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups" allowfullscreen="true" style="border:none;width:50vh;height:750px;" src="https://e.issuu.com/embed.html?d=11-klas-ukrajinska-mova-avramenko-2019&amp;pageLayout=singlePage&amp;u=stankobog"></iframe>
+        </div>
+        <div class="book">
+            <h4>Укр лит</h4>
+            <iframe sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups" allowfullscreen="true" style="border:none;width:50vh;height:750px;" src="https://e.issuu.com/embed.html?d=11-klas-ukrajinska-literatura-avramenko-2019&amp;pageLayout=singlePage&amp;u=stankobog"></iframe>
+        </div>
+        <div class="book">
+            <h4>Биология</h4>
+            <iframe sandbox="allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups" allowfullscreen="true" style="border:none;width:50vh;height:750px;" src="https://e.issuu.com/embed.html?d=11-klas-biologija-anderson-2019&amp;pageLayout=singlePage&amp;u=stankobog"></iframe>
+        </div>
         <p>by Ivan Presnyakov</p>
     </main>
+
+    <script>
+        // Скрытие popup окна при клике на крестик
+        document.getElementById('closeBtn').onclick = function() {
+            document.getElementById('popup').style.display = 'none';
+        };
+    </script>
 </body>
 </html>
