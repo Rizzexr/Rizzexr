@@ -11,7 +11,7 @@
 
 body {
     margin: 0;
-    background: linear-gradient(90deg, #1a1a1a, #2b2b2b, #333);
+    background: #ffffff;
     /* background: url(girl_in_forest_16x9_colored.png); */
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
@@ -38,7 +38,7 @@ h1{
     font-family: 'MyCustomFont', sans-serif;
     /* background: linear-gradient(90deg, #313049, #212136); */
     /* background: #a3a3a3; */
-    background: rgba(0, 0, 0, 0.3);
+    background: #0077ff;
 
     border-radius: 0.8vh;
     /* border: solid #a3a3a3 0.3vh; */
@@ -63,7 +63,7 @@ h1:hover{
     background: linear-gradient(135deg, #4d4d4d, #00ff15);
 } */
 #new{
-    background: linear-gradient(90deg, #ee09ba, #a242e6, #6030dd);
+    background: #447bba;
     border: none;
 }
 p{
@@ -111,7 +111,7 @@ p{
     flex-direction: column;
     padding: 2vh;
     /* background: #3d3d3d; */
-    background: rgba(0, 0, 0, 0.3);
+    background: #767f8b;
     border-radius: 2vh;
     margin-left: 2.5vh;
     margin-right: 2.5vh;
@@ -139,7 +139,7 @@ h3{
     left: 0;
     width: 200px;
     height: 100px;
-    background: #ff4d4d;
+    background: #0077ff;
     color: white;
     padding: 1vh;
     z-index: 1000; /* Чтобы он был поверх других элементов */
@@ -198,7 +198,7 @@ h4{
 h6{
     margin: 1vh;
     font-family: 'MUNICH', sans-serif;
-    color: #ff3b3b;
+    color: #000000;
     font-size: 2vh;
 }
 .icon{
@@ -236,7 +236,7 @@ h6{
     font-family: 'MyCustomFont', sans-serif;
     /* background: linear-gradient(90deg, #313049, #212136); */
     /* background: #a3a3a3; */
-    background: rgba(0, 0, 0, 0.3);
+    background: #767f8b;
 
     border-radius: 0.8vh;
     /* border: solid #a3a3a3 0.3vh; */
@@ -285,7 +285,7 @@ h6{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #64b4ff;
     padding: 10px 20px;
     border-radius: 0 0 10px 10px;
     font-size: 2rem;
@@ -300,7 +300,7 @@ h6{
     top: 60px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #64b4ff;
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 1.5rem;
@@ -336,7 +336,7 @@ h6{
 }
 
 .popup-content {
-    background: rgba(0, 0, 0, 0.7);
+    background: #0077ff;
     padding: 20px;
     border-radius: 10px;
     width: 80%;

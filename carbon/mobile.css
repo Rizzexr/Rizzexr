@@ -11,10 +11,7 @@
 
 body {
     margin: 0;
-    background: linear-gradient(90deg, #1a1a1a, #2b2b2b, #333);
-    /* background: url(girl_in_forest_16x9_colored.png); */
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
+    background: #fff;
 
     display: flex;
     justify-content: center;
@@ -26,53 +23,43 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    align-self: center;
 }
 a{
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: center;
 }
-
-/* LOCAL */
-
 h1{
+    font-size: 4vh;
     color: #fff;
     font-family: 'MyCustomFont', sans-serif;
     /* background: linear-gradient(90deg, #313049, #212136); */
     /* background: #a3a3a3; */
-    background: rgba(0, 0, 0, 0.3);
+    background: #0077ff;
 
     border-radius: 0.8vh;
     /* border: solid #a3a3a3 0.3vh; */
 
-    font-size: 5vh;
-    width: 50vh;
+    /* font-size: 5vh; */
+    width: 30vh;
 
     text-align: center;
     padding: 3vh;
     margin-top: 5vh;
-    margin-left: 4vh;
+    margin-left: 5vh;
     margin-right: 5vh;
 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-h1:hover{
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-/* #green{
-    background: linear-gradient(135deg, #4d4d4d, #00ff15);
-} */
-#new{
-    background: linear-gradient(90deg, #ee09ba, #a242e6, #6030dd);
-    border: none;
+    text-align: center;
 }
 p{
     font-family: 'MUNICH', sans-serif;
     color: #fff;
 }
-
-/* LOCAL */
-
 .line_days{
     display: flex;
     justify-content: center;flex-direction: row;
@@ -102,7 +89,7 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 .block{
     display: flex;
@@ -110,11 +97,11 @@ p{
     align-items: flex-start;
     flex-direction: column;
     padding: 2vh;
-    /* background: #3d3d3d; */
-    background: rgba(0, 0, 0, 0.3);
+    background: #767f8b;
     border-radius: 2vh;
-    margin-left: 2.5vh;
-    margin-right: 2.5vh;
+    /* margin-left: 2.5vh; */
+    /* margin-right: 2.5vh; */
+    margin-top: 5vh;
 
     width: 20vh;
 }
@@ -134,38 +121,76 @@ h3{
     font-family: 'MUNICH', sans-serif;
     color: #fff;
     font-size: 4vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100px;
-    background: #ff4d4d;
+    width: 15vh;
+    height: 7vh;
+    background: #0077ff;
     color: white;
     padding: 1vh;
-    z-index: 1000; /* Чтобы он был поверх других элементов */
-    margin: 5vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 2vh;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+
+    margin-top: 27.5vh;
 }
-#back:hover{
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+#back_two{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    width: 15vh;
+    height: 7vh;
+    background: #0077ff;
+    color: white;
+    padding: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    margin-top: 150vh;
+}
+#back_three{
+    text-align: center;
+    font-family: 'MUNICH', sans-serif;
+    color: #fff;
+    font-size: 4vh;
+    width: 15vh;
+    height: 7vh;
+    background: #0077ff;
+    color: white;
+    padding: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    /* margin-top: 20vh; */
 }
 .lesson{
-    background: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #4d4d4d, #00ff15);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
 
     padding: 2vh;
     margin-top: 5vh;
+    width: 35vh;
+}
+.lesson_line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 h5{
     margin: 1vh;
@@ -190,7 +215,7 @@ h4{
     font-family: 'MUNICH', sans-serif;
     color: #fff;
     font-size: 3vh;
-    width: 20vh;
+    width: 15vh;
 }
 #upper{
     margin-top: 5vh;
@@ -198,10 +223,15 @@ h4{
 h6{
     margin: 1vh;
     font-family: 'MUNICH', sans-serif;
-    color: #ff3b3b;
+    color: #000;
     font-size: 2vh;
 }
-.icon{
+a:focus, a:active {
+    outline: none;
+    color: inherit; /* Опционально: сохранит исходный цвет текста */
+  }
+  
+  .icon{
     color: #fff;
     font-family: 'MyCustomFont', sans-serif;
     /* background: linear-gradient(135deg, #4d4d4d, #ff4d4d); */
@@ -229,63 +259,19 @@ h6{
     width: 10vh;
     margin: 0;
 }
-.book {
-    cursor: pointer;
-    margin-bottom: 1vh;
-    color: #fff;
-    font-family: 'MyCustomFont', sans-serif;
-    /* background: linear-gradient(90deg, #313049, #212136); */
-    /* background: #a3a3a3; */
-    background: rgba(0, 0, 0, 0.3);
-
-    border-radius: 0.8vh;
-    /* border: solid #a3a3a3 0.3vh; */
-
-    font-size: 5vh;
-    width: 50vh;
-
-    text-align: center;
-    padding: 3vh;
-    margin-top: 5vh;
-    margin-left: 4vh;
-    margin-right: 5vh;
-
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+#new{
+    background: #447bba;
+    border: none;
 }
-.book_two {
-    cursor: pointer;
-    margin-bottom: 1vh;
-    /* background: linear-gradient(90deg, #313049, #212136); */
-    /* background: #a3a3a3; */
-    /* background: rgba(0, 0, 0, 0.3); */
-
-    border-radius: 0.8vh;
-    /* border: solid #a3a3a3 0.3vh; */
-
-    font-size: 5vh;
-    width: 50vh;
-
-    padding: 3vh;
-    margin-top: 5vh;
-    margin-left: 4vh;
-    margin-right: 5vh;
-
-}
-#uni{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    background: #333333;
-}
+/* #green{
+    background: linear-gradient(135deg, #4d4d4d, #00ff15);
+} */
 #clock {
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #64b4ff;
     padding: 10px 20px;
     border-radius: 0 0 10px 10px;
     font-size: 2rem;
@@ -294,29 +280,42 @@ h6{
     font-family: 'MyCustomFont', sans-serif;
     color: #fff;
 }
+
 #schedule {
     color: #fff;
     position: fixed;
     top: 60px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #64b4ff;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 1vh;
     font-size: 1.5rem;
     z-index: 1000;
     pointer-events: none;
     font-family: 'MyCustomFont', sans-serif;
+    height: auto;
+    white-space: nowrap; /* Ensures that the text stays on one line */
+}
+
+
+#upper_two{
+    margin-top: 3vh;
 }
 .book{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    background: #767f8b;
+    margin-top: 3vh;
+    border-radius: 2vh;
 }
 #up{
-    margin-top: 485vh;
+    margin-top: 50vh;
 }
+
 
 
 
@@ -336,7 +335,7 @@ h6{
 }
 
 .popup-content {
-    background: rgba(0, 0, 0, 0.7);
+    background: #0077ff;
     padding: 20px;
     border-radius: 10px;
     width: 80%;
