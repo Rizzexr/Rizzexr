@@ -1,111 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://i.ibb.co/mq6SBcm/logo.png">
-    <title>11Б</title>
-    <script>
-        function isMobileDevice() {
-            
-            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    <title>Школьные предметы с диаграммами</title>
+    <style>
+        body {
+            background-color: #1c1e29;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
         }
 
-        window.onload = function() {
-            if (isMobileDevice()) {
-                window.location.href = "mobile.html"; 
+        h1 {
+            color: #e1e4eb;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .day {
+            background: #2a2f3e;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .day:hover {
+            transform: scale(1.02);
+        }
+
+        .day-info {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .pie {
+            --p: 0;
+            --b: 22px;
+            --c: #0fff03;
+            --w: 80px;
+            width: var(--w);
+            aspect-ratio: 1;
+            position: relative;
+            display: inline-grid;
+            margin: 0 auto;
+        }
+
+        .pie:before,
+        .pie:after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .pie:before {
+            inset: 0;
+            background:
+                radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
+                conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+            mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+        }
+
+        .pie:after {
+            inset: calc(50% - var(--b) / 2);
+            background: var(--c);
+            transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+        }
+
+        .percentage {
+            margin-top: 10px; /* Отступ сверху для более низкого расположения */
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            background-color: #212634;
+            border-radius: 8px;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        label:hover {
+            transform: scale(1.05);
+        }
+
+        .checked {
+            background-color: #007bff;
+        }
+
+        input {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .pie {
+                --w: 60px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            label {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .percentage {
+                font-size: 16px;
             }
         }
-    </script>
+    </style>
 </head>
 <body>
-    <div id="clock">Загрузка...</div>
-    <div id="schedule">чезабретто</div>
-    <main>
-        <a href="days.html"><h1>Расписание</h1></a>
-        <a href="requests.html"><h1>Книги</h1></a>
-        <a href="ring.html"><h1 id="green">Звонки</h1></a>
-        <a href="https://classroom.google.com/h" target="_blank"><!-- <div class="icon"><img src="logo/class.png" id="icon"></div> --><h1 id="new">Google Class</h1></a>
-        <p>by Ivan Presnyakov</p>
-    </main>
+
+    <h1>Школьные предметы на неделю</h1>
+
+    <div class="day" data-day="monday">
+        <div class="day-info">
+            <h2>Понедельник</h2>
+            <div>
+                <label><input type="checkbox" class="subject"> Алгебра</label>
+                <label><input type="checkbox" class="subject"> Физика</label>
+                <label><input type="checkbox" class="subject"> Английский</label>
+                <label><input type="checkbox" class="subject"> Зар литература</label>
+                <label><input type="checkbox" class="subject"> Физическая культура</label>
+                <label><input type="checkbox" class="subject"> География</label>
+                <label><input type="checkbox" class="subject"> Астрономия</label>
+            </div>
+        </div>
+        <div class="pie" style="--p: 0;"></div>
+        <div class="percentage">0%</div>
+    </div>
+<div class="day" data-day="tuesday">
+        <div class="day-info">
+            <h2>Вторник</h2>
+            <div>
+                <label><input type="checkbox" class="subject"> Математика</label>
+                <label><input type="checkbox" class="subject"> Биология</label>
+                <label><input type="checkbox" class="subject"> Русский язык</label>
+                <label><input type="checkbox" class="subject"> Музыка</label>
+                <label><input type="checkbox" class="subject"> Технология</label>
+            </div>
+        </div>
+        <div class="pie" style="--p: 0;"></div>
+        <div class="percentage">0%</div>
+    </div>
+
     <script>
-        const lessons = [
-            {start: "08:00", end: "08:40"},
-            {start: "08:50", end: "09:30"},
-            {start: "09:40", end: "10:20"},
-            {start: "10:30", end: "11:10"},
-            {start: "11:25", end: "12:05"},
-            {start: "12:15", end: "12:55"},
-            {start: "13:00", end: "13:40"}
-        ];
-    
-        function pad(num) {
-            return num.toString().padStart(2, '0');
+        document.querySelectorAll('.subject').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const dayElement = this.closest('.day');
+                updateChart(dayElement);
+                saveState();
+                const label = this.closest('label');
+                label.classList.toggle('checked', this.checked);
+            });
+        });
+
+        function updateChart(day) {
+            const checkboxes = day.querySelectorAll('input[type="checkbox"]');
+            const total = checkboxes.length;
+            const checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            const percentage = Math.round((checkedCount / total) * 100);
+            const pie = day.querySelector('.pie');
+            pie.style.setProperty('--p', percentage);
+            day.querySelector('.percentage').textContent = percentage + '%';
         }
-    
-        function getTimeRemaining(endTime) {
-            const now = new Date();
-            const end = new Date();
-            const [hours, minutes] = endTime.split(':');
-            end.setHours(hours);
-            end.setMinutes(minutes);
-            end.setSeconds(0);
-    
-            const diff = end - now;
-            if (diff <= 0) return null;
-    
-            const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000);
-    
-            return `${pad(minutesLeft)}:${pad(secondsLeft)}`;
+
+        function saveState() {
+            const days = document.querySelectorAll('.day');
+            days.forEach(day => {
+                const dayName = day.getAttribute('data-day');
+                const checkboxes = day.querySelectorAll('input[type="checkbox"]');
+                const checkedStates = Array.from(checkboxes).map(checkbox => checkbox.checked);
+                localStorage.setItem(dayName, JSON.stringify(checkedStates));
+            });
         }
-    
-        function getCurrentLesson() {
-            const now = new Date();
-            const nowTime = pad(now.getHours()) + ':' + pad(now.getMinutes());
-    
-            // Проверяем, начался ли учебный день (с 7:50 до окончания последнего урока)
-            const startDay = "07:50";
-            const endDay = "13:50";
-            if (nowTime < startDay || nowTime > endDay) {
-                document.getElementById('schedule').textContent = 'чезабретто';
-                return;
-            }
-    
-            // Определение текущего урока или перемены
-            for (let i = 0; i < lessons.length; i++) {
-                const lessonStart = lessons[i].start;
-                const lessonEnd = lessons[i].end;
-    
-                // Если текущее время в пределах урока
-                if (nowTime >= lessonStart && nowTime <= lessonEnd) {
-                    const remainingTime = getTimeRemaining(lessonEnd);
-                    document.getElementById('schedule').textContent = `Урок ${i + 1}. До конца: ${remainingTime}`;
-                    return;
-                }
-    
-                // Если текущее время в пределах перемены перед уроком
-                if (i < lessons.length - 1 && nowTime > lessonEnd && nowTime < lessons[i + 1].start) {
-                    const remainingTime = getTimeRemaining(lessons[i + 1].start);
-                    document.getElementById('schedule').textContent = `Урок через ${i + 2}: ${remainingTime}`;
-                    return;
-                }
-            }
+
+        function loadState() {
+            const days = document.querySelectorAll('.day');
+            days.forEach(day => {
+                const dayName = day.getAttribute('data-day');
+                const savedStates = JSON.parse(localStorage.getItem(dayName)) || [];
+                const checkboxes = day.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach((checkbox, index) => {
+                    checkbox.checked = savedStates[index];
+                    if (checkbox.checked) {
+                        checkbox.closest('label').classList.add('checked');
+                    }
+                });
+                updateChart(day);
+            });
         }
-    
-        function updateTime() {
-            const now = new Date();
-            const hours = pad(now.getHours());
-            const minutes = pad(now.getMinutes());
-            const seconds = pad(now.getSeconds());
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-    
-            getCurrentLesson();
-        }
-    
-        setInterval(updateTime, 1000);
-        updateTime(); // Запуск сразу при загрузке страницы
+
+        loadState();
     </script>
+
 </body>
 </html>
