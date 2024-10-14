@@ -141,3 +141,31 @@ blockquote {
 .social-links a:hover {
     color: #0077b5; /* LinkedIn blue */
 }
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    100% { opacity: 1; }
+}
+.stat {
+    transform: translateX(-100%);
+    animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+    100% { transform: translateX(0); }
+}
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+    50% { transform: translateY(-10px); box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);}
+}
