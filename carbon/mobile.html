@@ -1,99 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="icon" href="https://i.ibb.co/mq6SBcm/logo.png">
-    <title>11Б</title>
+    <title>Ваня - Портфолио</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <main>
-        <div id="clock">Загрузка...</div>
-        <div id="schedule">чезабретто</div>
-        <a href="days_mobile.html" id="upper_two"><h1>Расписание</h1></a>
-        <a href="requests_mobile.html"><h1>Книги</h1></a>
-        <a href="ring_mobile.html"><h1 id="green">Звонки</h1></a>
-        <a href="https://classroom.google.com/h" target="_blank"><!-- <div class="icon"><img src="logo/class.png" id="icon"></div> --><h1 id="new">Google Class</h1></a>
-        <p>by Ivan Presnyakov</p>
-    </main>
-    <script>
-        const lessons = [
-            {start: "08:00", end: "08:40"},
-            {start: "08:50", end: "09:30"},
-            {start: "09:40", end: "10:20"},
-            {start: "10:30", end: "11:10"},
-            {start: "11:25", end: "12:05"},
-            {start: "12:15", end: "12:55"},
-            {start: "13:00", end: "13:40"}
-        ];
-    
-        function pad(num) {
-            return num.toString().padStart(2, '0');
-        }
-    
-        function getTimeRemaining(endTime) {
-            const now = new Date();
-            const end = new Date();
-            const [hours, minutes] = endTime.split(':');
-            end.setHours(hours);
-            end.setMinutes(minutes);
-            end.setSeconds(0);
-    
-            const diff = end - now;
-            if (diff <= 0) return null;
-    
-            const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000);
-    
-            return `${pad(minutesLeft)}:${pad(secondsLeft)}`;
-        }
-    
-        function getCurrentLesson() {
-            const now = new Date();
-            const nowTime = pad(now.getHours()) + ':' + pad(now.getMinutes());
-    
-            // Проверяем, начался ли учебный день (с 7:50 до окончания последнего урока)
-            const startDay = "07:50";
-            const endDay = "13:50";
-            if (nowTime < startDay || nowTime > endDay) {
-                document.getElementById('schedule').textContent = 'чезабретто';
-                return;
-            }
-    
-            // Определение текущего урока или перемены
-            for (let i = 0; i < lessons.length; i++) {
-                const lessonStart = lessons[i].start;
-                const lessonEnd = lessons[i].end;
-    
-                // Если текущее время в пределах урока
-                if (nowTime >= lessonStart && nowTime <= lessonEnd) {
-                    const remainingTime = getTimeRemaining(lessonEnd);
-                    document.getElementById('schedule').textContent = `Урок ${i + 1}. До конца: ${remainingTime}`;
-                    return;
-                }
-    
-                // Если текущее время в пределах перемены перед уроком
-                if (i < lessons.length - 1 && nowTime > lessonEnd && nowTime < lessons[i + 1].start) {
-                    const remainingTime = getTimeRemaining(lessons[i + 1].start);
-                    document.getElementById('schedule').textContent = `Урок через ${i + 2}: ${remainingTime}`;
-                    return;
-                }
-            }
-        }
-    
-        function updateTime() {
-            const now = new Date();
-            const hours = pad(now.getHours());
-            const minutes = pad(now.getMinutes());
-            const seconds = pad(now.getSeconds());
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-    
-            getCurrentLesson();
-        }
-    
-        setInterval(updateTime, 1000);
-        updateTime(); // Запуск сразу при загрузке страницы
-    </script>
+    <header class="header">
+        <div class="container">
+            <h1>Привет!<br>Я Ваня, мне 17 лет</h1>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-tiktok"></i> LinkedIn</a> | 
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a> | 
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+            <img src="profile.jpg" alt="Фото профиля" class="profile-pic">
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="stat"><i class="fas fa-code"></i> C# <span>ASP NET. MVC</span></div>
+        <div class="stat"><i class="fas fa-laptop-code"></i> Front-end<span>HTML/CSS/JS</span></div>
+        <div class="stat"><i class="fab fa-python"></i> Python<span>Python/TelegramBotAPI</span></div>
+        <div class="stat"><i class="fas fa-paint-brush"></i> UI-UX<span>Figma/Photoshop/Ai</span></div>
+        <div class="stat"><i class="fas fa-cube"></i> 3D<span>Blender/Gaea/UE5/Unity/Bridge</span></div>
+        <div class="stat"><i class="fas fa-music"></i> Music<span>Гитара/Пианино/Fls/Au</span></div>
+    </section>
+
+    <section class="services">
+        <h2>Услуги</h2>
+        <div class="service-card"><i class="fas fa-cubes"></i> 3D Графика</div>
+        <div class="service-card"><i class="fas fa-laptop"></i> Программирование</div>
+        <div class="service-card"><i class="fas fa-drafting-compass"></i> UI/UX Дизайн</div>
+        <div class="service-card"><i class="fas fa-camera-retro"></i> Фотография и Видео</div>
+        <div class="service-card"><i class="fas fa-globe"></i> Создание сайтов</div>
+        <div class="service-card"><i class="fab fa-telegram"></i> Телеграм-боты</div>
+    </section>
+
+    <section class="testimonials">
+        <h2>О себе</h2>
+        <blockquote>
+            <p>Занимаюсь 3D графикой, программированием, UI/UX дизайном, создаю сайты, программы, телеграм-ботов. Также увлекаюсь фотографией, обработкой видео и фото, игрой на гитаре и пианино.</p>
+        </blockquote>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Ваня. Все права защищены.</p>
+    </footer>
 </body>
 </html>
