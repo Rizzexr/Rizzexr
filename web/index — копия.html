@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .receipt {
+            background-color: #fff;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 320px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .receipt h1 {
+            font-size: 20px;
+            text-align: center;
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .receipt time {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .receipt .transaction-item {
+            margin: 10px 0;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+
+        .receipt .transaction-item span {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .receipt .total {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .receipt::after {
+            content: '';
+            display: block;
+            border-top: 1px dashed #ccc;
+            margin: 15px 0;
+        }
+
+        .receipt img {
+            max-width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .add{
+            background: #ff2323;
+            border: none;
+            color: #fff;
+            font-size: 3vh;
+            padding: 1vh;
+            border-radius: 2vh;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 480px) {
+            .receipt {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .receipt h1 {
+                font-size: 18px;
+            }
+
+            .receipt .transaction-item,
+            .receipt time {
+                font-size: 14px;
+            }
+
+            .receipt .total {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <img src="images/cola.png" alt="Coca-Cola Logo">
+        <h1>Coca-Cola</h1>
+        <time>0.5L</time>
+        <div class="transaction-item">
+            <span>Цена:</span> <data id="sender">27,99₴</data>
+        </div>
+        <button class="add">Заказать</button>
+    </div>
+
+    <div class="receipt">
+        <img src="images/fanta.jpg" alt="Coca-Cola Logo">
+        <h1>Fanta</h1>
+        <time>0.5L</time>
+        <div class="transaction-item">
+            <span>Цена:</span> <data id="sender">29,99₴</data>
+        </div>
+        <button class="add">Заказать</button>
+    </div>
+</body>
+</html>
