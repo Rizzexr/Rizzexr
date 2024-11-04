@@ -3,212 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Школьные предметы с диаграммами</title>
+    <title>Магазин</title>
     <style>
-        body {
-            background-color: #1c1e29;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #e1e4eb;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 24px;
-        }
-
-        .day {
-            background: #2a2f3e;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            margin: 15px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s;
-        }
-
-        .day:hover {
-            transform: scale(1.02);
-        }
-
-        .day-info {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .pie {
-            --p: 0;
-            --b: 22px;
-            --c: #0fff03;
-            --w: 80px;
-            width: var(--w);
-            aspect-ratio: 1;
-            position: relative;
-            display: inline-grid;
-            margin: 0 auto;
-        }
-
-        .pie:before,
-        .pie:after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-        }
-
-        .pie:before {
-            inset: 0;
-            background:
-                radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
-                conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
-            mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-        }
-
-        .pie:after {
-            inset: calc(50% - var(--b) / 2);
-            background: var(--c);
-            transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
-        }
-
-        .percentage {
-            margin-top: 10px; /* Отступ сверху для более низкого расположения */
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        label {
-            display: block;
-            margin: 8px 0;
-            cursor: pointer;
-            background-color: #212634;
-            border-radius: 8px;
-            color: white;
-            padding: 12px;
-            text-align: center;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        label:hover {
-            transform: scale(1.05);
-        }
-
-        .checked {
-            background-color: #007bff;
-        }
-
-        input {
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .pie {
-                --w: 60px;
-            }
-
-            h1 {
-                font-size: 20px;
-            }
-
-            label {
-                font-size: 16px;
-                padding: 10px;
-            }
-
-            .percentage {
-                font-size: 16px;
-            }
-        }
+        body { font-family: Arial, sans-serif; }
+        .product { margin: 10px; }
+        .cart { margin-top: 20px; }
     </style>
 </head>
 <body>
-
-    <h1>Школьные предметы на неделю</h1>
-
-    <div class="day" data-day="monday">
-        <div class="day-info">
-            <h2>Понедельник</h2>
-            <div>
-                <label><input type="checkbox" class="subject"> Алгебра</label>
-                <label><input type="checkbox" class="subject"> Физика</label>
-                <label><input type="checkbox" class="subject"> Английский</label>
-                <label><input type="checkbox" class="subject"> Зар литература</label>
-                <label><input type="checkbox" class="subject"> Физическая культура</label>
-                <label><input type="checkbox" class="subject"> География</label>
-                <label><input type="checkbox" class="subject"> Астрономия</label>
-            </div>
+    <h2>Магазин</h2>
+    <div id="product-list">
+        <div class="product">
+            <button onclick="addToCart('Пепси', 50)">Пепси - 50 руб</button>
         </div>
-        <div class="pie" style="--p: 0;"></div>
-        <div class="percentage">0%</div>
+        <div class="product">
+            <button onclick="addToCart('Чипсы', 30)">Чипсы - 30 руб</button>
+        </div>
+        <div class="product">
+            <button onclick="addToCart('Сода', 20)">Сода - 20 руб</button>
+        </div>
     </div>
-<div class="day" data-day="tuesday">
-        <div class="day-info">
-            <h2>Вторник</h2>
-            <div>
-                <label><input type="checkbox" class="subject"> Математика</label>
-                <label><input type="checkbox" class="subject"> Биология</label>
-                <label><input type="checkbox" class="subject"> Русский язык</label>
-                <label><input type="checkbox" class="subject"> Музыка</label>
-                <label><input type="checkbox" class="subject"> Технология</label>
-            </div>
-        </div>
-        <div class="pie" style="--p: 0;"></div>
-        <div class="percentage">0%</div>
+    <div class="cart">
+        <button onclick="checkout()">Оплатить</button>
     </div>
 
     <script>
-        document.querySelectorAll('.subject').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const dayElement = this.closest('.day');
-                updateChart(dayElement);
-                saveState();
-                const label = this.closest('label');
-                label.classList.toggle('checked', this.checked);
-            });
-        });
+        const cart = [];
 
-        function updateChart(day) {
-            const checkboxes = day.querySelectorAll('input[type="checkbox"]');
-            const total = checkboxes.length;
-            const checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-            const percentage = Math.round((checkedCount / total) * 100);
-            const pie = day.querySelector('.pie');
-            pie.style.setProperty('--p', percentage);
-            day.querySelector('.percentage').textContent = percentage + '%';
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            alert(`${name} добавлено в корзину.`);
         }
 
-        function saveState() {
-            const days = document.querySelectorAll('.day');
-            days.forEach(day => {
-                const dayName = day.getAttribute('data-day');
-                const checkboxes = day.querySelectorAll('input[type="checkbox"]');
-                const checkedStates = Array.from(checkboxes).map(checkbox => checkbox.checked);
-                localStorage.setItem(dayName, JSON.stringify(checkedStates));
-            });
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Корзина пуста.");
+                return;
+            }
+
+            const order = cart.map(item => `${item.name} - ${item.price} руб`).join(", ");
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+            // Отправляем заказ обратно боту через WebApp
+            Telegram.WebApp.sendData(JSON.stringify({ order, total }));
         }
 
-        function loadState() {
-            const days = document.querySelectorAll('.day');
-            days.forEach(day => {
-                const dayName = day.getAttribute('data-day');
-                const savedStates = JSON.parse(localStorage.getItem(dayName)) || [];
-                const checkboxes = day.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach((checkbox, index) => {
-                    checkbox.checked = savedStates[index];
-                    if (checkbox.checked) {
-                        checkbox.closest('label').classList.add('checked');
-                    }
-                });
-                updateChart(day);
-            });
-        }
-
-        loadState();
+        Telegram.WebApp.ready();  // Уведомляем Telegram, что веб-приложение готово
     </script>
-
 </body>
 </html>
