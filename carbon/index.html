@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Telegram Web App Example</title>
     <style>
         body {
@@ -49,54 +50,55 @@
     <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
 
     <script>
-        let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-
-        tg.expand(); //расширяем на все окно  
-
+        let tg = window.Telegram.WebApp; // получаем объект webapp телеграма 
+    
+        tg.expand(); // расширяем на все окно  
+    
         // Изменения текста и цвета основной кнопки
-        tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
-        tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
-        tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-        tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-        tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры 
-
+        tg.MainButton.text = "Changed Text"; // изменяем текст кнопки 
+        tg.MainButton.setText("Changed Text1"); // изменяем текст кнопки иначе
+        tg.MainButton.textColor = "#F55353"; // изменяем цвет текста кнопки
+        tg.MainButton.color = "#143F6B"; // изменяем цвет бэкграунда кнопки
+        tg.MainButton.setParams({"color": "#143F6B"}); // так изменяются все параметры 
+    
         // Обработчик для показа/скрытия основной кнопки
         document.getElementById('btn').addEventListener('click', function() {
             if (tg.MainButton.isVisible) {
-                tg.MainButton.hide(); //скрываем кнопку 
+                tg.MainButton.hide(); // скрываем кнопку 
             } else {
-                tg.MainButton.show(); //показываем 
+                tg.MainButton.show(); // показываем 
             }
         });
-
+    
         // Обработчик для активации/деактивации основной кнопки
-        let btnED = document.getElementById("btnED"); //получаем кнопку активировать/деактивировать
+        let btnED = document.getElementById("btnED"); // получаем кнопку активировать/деактивировать
         btnED.addEventListener('click', function() {
             if (tg.MainButton.isActive) {
-                tg.MainButton.setParams({"color": "#E0FFFF"}); //меняем цвет
-                tg.MainButton.disable(); //деактивируем кнопку 
+                tg.MainButton.setParams({"color": "#E0FFFF"}); // меняем цвет
+                tg.MainButton.disable(); // деактивируем кнопку 
             } else {
-                tg.MainButton.setParams({"color": "#143F6B"}); //меняем цвет
-                tg.MainButton.enable(); //активируем кнопку 
+                tg.MainButton.setParams({"color": "#143F6B"}); // меняем цвет
+                tg.MainButton.enable(); // активируем кнопку 
             }
         });
-
+    
         // Отправка данных при нажатии на основную кнопку
         Telegram.WebApp.onEvent('mainButtonClicked', function() {
             tg.sendData("some string that we need to send"); 
-            //при клике на основную кнопку отправляем данные в строковом виде
+            // при клике на основную кнопку отправляем данные в строковом виде
         });
-
+    
         // Вывод информации о пользователе
-        let usercard = document.getElementById("usercard"); //получаем блок usercard 
-
-        let profName = document.createElement('p'); //создаем параграф
+        let usercard = document.getElementById("usercard"); // получаем блок usercard 
+    
+        let profName = document.createElement('p'); // создаем параграф
         profName.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} (${tg.initDataUnsafe.user.username}, ${tg.initDataUnsafe.user.language_code})`;
-        usercard.appendChild(profName); //добавляем 
-
-        let userid = document.createElement('p'); //создаем еще параграф 
-        userid.innerText = `User ID: ${tg.initDataUnsafe.user.id}`; //показываем user_id
-        usercard.appendChild(userid); //добавляем
+        usercard.appendChild(profName); // добавляем 
+    
+        let userid = document.createElement('p'); // создаем еще параграф 
+        userid.innerText = `User ID: ${tg.initDataUnsafe.user.id}`; // показываем user_id
+        usercard.appendChild(userid); // добавляем
     </script>
+    
 </body>
 </html>
