@@ -175,26 +175,41 @@
     </div>
 
     <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand();
+        let tg = window.Telegram.WebApp; // получаем объект webapp телеграма
+        tg.expand(); // расширяем на все окно  
 
+        // Изменения текста и цвета основной кнопки
         tg.MainButton.text = "Заказать";
-        tg.MainButton.textColor = "#FFFFFF";
-        tg.MainButton.color = "#b30838";
+        tg.MainButton.setText("Оформить заказ"); 
+        tg.MainButton.textColor = "#FFFFFF"; 
+        tg.MainButton.color = "#b30838"; 
+        tg.MainButton.setParams({"color": "#b30838"}); 
 
-        let orderList = [];
+        let orderList = []; // Список выбранных товаров
 
         function addToOrder(productId) {
             if (!orderList.includes(productId)) {
                 orderList.push(productId);
                 alert(`Добавлено в заказ: ${productId}`);
             }
-            tg.MainButton.show();
+            tg.MainButton.show(); // Показываем основную кнопку
         }
 
+        // Отправка данных при нажатии на основную кнопку
         Telegram.WebApp.onEvent('mainButtonClicked', function() {
-            tg.sendData(orderList.join('\n')); // Отправляем список выбранных товаров
+            tg.sendData(orderList.join(', ')); // Отправляем список ID товаров в строковом виде
         });
+
+        // Вывод информации о пользователе
+        let usercard = document.getElementById("usercard");
+
+        let profName = document.createElement('p');
+        profName.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} (${tg.initDataUnsafe.user.username}, ${tg.initDataUnsafe.user.language_code})`;
+        usercard.appendChild(profName);
+
+        let userid = document.createElement('p');
+        userid.innerText = `User ID: ${tg.initDataUnsafe.user.id}`;
+        usercard.appendChild(userid);
     </script>
 </body>
 </html>
