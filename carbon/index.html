@@ -5,34 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .product { margin: 10px; }
-        .cart { margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: #1e1e1e;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin: 5px 0;
+        }
+        .cart {
+            margin-top: 20px;
+            width: 200px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h2>Магазин</h2>
-    <div id="product-list">
-        <div class="product">
-            <button onclick="addToCart('Пепси', 50)">Пепси - 50 руб</button>
-        </div>
-        <div class="product">
-            <button onclick="addToCart('Чипсы', 30)">Чипсы - 30 руб</button>
-        </div>
-        <div class="product">
-            <button onclick="addToCart('Сода', 20)">Сода - 20 руб</button>
-        </div>
+    <h1>Магазин</h1>
+    <div class="item">
+        <span>Пепси</span>
+        <button onclick="addToCart('Пепси', 50)">Добавить (50 руб)</button>
     </div>
+    <div class="item">
+        <span>Чипсы</span>
+        <button onclick="addToCart('Чипсы', 30)">Добавить (30 руб)</button>
+    </div>
+    <div class="item">
+        <span>Шоколад</span>
+        <button onclick="addToCart('Шоколад', 80)">Добавить (80 руб)</button>
+    </div>
+
     <div class="cart">
+        <h2>Корзина</h2>
+        <ul id="cartItems"></ul>
+        <strong>Итого: <span id="totalPrice">0</span> руб</strong>
         <button onclick="checkout()">Оплатить</button>
     </div>
 
     <script>
-        const cart = [];
+        let cart = [];
 
         function addToCart(name, price) {
             cart.push({ name, price });
-            alert(`${name} добавлено в корзину.`);
+            updateCart();
+            console.log(`Добавлено в корзину: ${name} за ${price} руб`);
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const totalPrice = document.getElementById('totalPrice');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price} руб`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+
+            totalPrice.textContent = total;
         }
 
         function checkout() {
@@ -44,11 +87,11 @@
             const order = cart.map(item => `${item.name} - ${item.price} руб`).join(", ");
             const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-            // Отправляем заказ обратно боту через WebApp
+            console.log("Заказ отправляется в бот:", { order, total });
+
+            // Отправляем данные в Telegram через WebApp API
             Telegram.WebApp.sendData(JSON.stringify({ order, total }));
         }
-
-        Telegram.WebApp.ready();  // Уведомляем Telegram, что веб-приложение готово
     </script>
 </body>
 </html>
