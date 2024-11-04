@@ -1,97 +1,19 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background: #1e1e1e;
-        }
-        .item {
-            display: flex;
-            justify-content: space-between;
-            width: 200px;
-            margin: 5px 0;
-        }
-        .cart {
-            margin-top: 20px;
-            width: 200px;
-            text-align: center;
-        }
-        button {
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Receipt</title>
 </head>
 <body>
-    <h1>Магазин</h1>
-    <div class="item">
-        <span>Пепси</span>
-        <button onclick="addToCart('Пепси', 50)">Добавить (50 руб)</button>
+    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
     </div>
-    <div class="item">
-        <span>Чипсы</span>
-        <button onclick="addToCart('Чипсы', 30)">Добавить (30 руб)</button>
-    </div>
-    <div class="item">
-        <span>Шоколад</span>
-        <button onclick="addToCart('Шоколад', 80)">Добавить (80 руб)</button>
-    </div>
-
-    <div class="cart">
-        <h2>Корзина</h2>
-        <ul id="cartItems"></ul>
-        <strong>Итого: <span id="totalPrice">0</span> руб</strong>
-        <button onclick="checkout()">Оплатить</button>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-            console.log(`Добавлено в корзину: ${name} за ${price} руб`);
-        }
-
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const totalPrice = document.getElementById('totalPrice');
-            cartItems.innerHTML = '';
-            let total = 0;
-
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.name} - ${item.price} руб`;
-                cartItems.appendChild(li);
-                total += item.price;
-            });
-
-            totalPrice.textContent = total;
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert("Корзина пуста.");
-                return;
-            }
-
-            const order = cart.map(item => `${item.name} - ${item.price} руб`).join(", ");
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-
-            console.log("Заказ отправляется в бот:", { order, total });
-
-            // Отправляем данные в Telegram через WebApp API
-            Telegram.WebApp.sendData(JSON.stringify({ order, total }));
-        }
-    </script>
+    <p>Just text</p> <!--Просто текст для проверки-->
+    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
+    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
+    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
+    <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
 </body>
 </html>
