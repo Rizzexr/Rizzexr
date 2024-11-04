@@ -197,11 +197,8 @@
 
         // Отправка данных при нажатии на основную кнопку
         Telegram.WebApp.onEvent('mainButtonClicked', function() {
-            if (orderList.length > 0) {
-                tg.sendData(orderList.join(', ')); // Send list of selected item IDs
-            } else {
-                alert("Вы не выбрали ни одного товара.");
-            }
+            tg.sendData("some string that we need to send"); 
+        // при клике на основную кнопку отправляем данные в строковом виде
         });
 
 
