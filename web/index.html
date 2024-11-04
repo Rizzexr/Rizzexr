@@ -103,7 +103,7 @@
         }
         header{
             background: #b30838;
-            width: 100vi;
+            width: 99vi;
             margin-top: 0;
 
             display: flex;
@@ -197,8 +197,13 @@
 
         // Отправка данных при нажатии на основную кнопку
         Telegram.WebApp.onEvent('mainButtonClicked', function() {
-            tg.sendData(orderList.join(', ')); // Отправляем список ID товаров в строковом виде
+            if (orderList.length > 0) {
+                tg.sendData(orderList.join(', ')); // Send list of selected item IDs
+            } else {
+                alert("Вы не выбрали ни одного товара.");
+            }
         });
+
 
         // Вывод информации о пользователе
         let usercard = document.getElementById("usercard");
