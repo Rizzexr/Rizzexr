@@ -175,45 +175,46 @@
     </div>
 
     <script>
-        let tg = window.Telegram.WebApp; // получаем объект webapp телеграма
-        tg.expand(); // расширяем на все окно  
-
+        let tg = window.Telegram.WebApp; // получаем объект webapp телеграма 
+    
+        tg.expand(); // расширяем на все окно   
+    
         // Изменения текста и цвета основной кнопки
-        tg.MainButton.text = "Заказать";
-        tg.MainButton.setText("Оформить заказ"); 
+        tg.MainButton.setText("Оформить заказ"); // изменяем текст кнопки 
         tg.MainButton.textColor = "#FFFFFF"; 
         tg.MainButton.color = "#b30838"; 
         tg.MainButton.setParams({"color": "#b30838"}); 
-
+    
         let orderList = []; // Список выбранных товаров
-
+    
         function addToOrder(productId) {
             if (!orderList.includes(productId)) {
                 orderList.push(productId);
                 alert(`Добавлено в заказ: ${productId}`);
+                tg.MainButton.show(); // Показываем основную кнопку только если добавили товар
             }
-            tg.MainButton.show(); // Показываем основную кнопку
         }
-
+    
         // Отправка данных при нажатии на основную кнопку
-        Telegram.WebApp.onEvent('mainButtonClicked', function(){
-	        tg.sendData("some string that we need to send"); 
-	        //при клике на основную кнопку отправляем данные в строковом виде
+        Telegram.WebApp.onEvent('mainButtonClicked', function() {
+            tg.sendData(JSON.stringify(orderList)); // Отправляем данные в строковом виде
         });
-
-
+    
         // Вывод информации о пользователе
         let usercard = document.getElementById("usercard");
-
-        let profName = document.createElement('p');
-        profName.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} (${tg.initDataUnsafe.user.username}, ${tg.initDataUnsafe.user.language_code})`;
-        usercard.appendChild(profName);
-
-        let userid = document.createElement('p');
-        userid.innerText = `User ID: ${tg.initDataUnsafe.user.id}`;
-        usercard.appendChild(userid);
+        
+        if (usercard) { // Проверка, существует ли элемент
+            let profName = document.createElement('p');
+            profName.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} (${tg.initDataUnsafe.user.username}, ${tg.initDataUnsafe.user.language_code})`;
+            usercard.appendChild(profName);
+    
+            let userid = document.createElement('p');
+            userid.innerText = `User ID: ${tg.initDataUnsafe.user.id}`;
+            usercard.appendChild(userid);
+        }
     </script>
+    
 </body>
 </html>
 
-<!-- 001 -->
+<!-- 002 -->
