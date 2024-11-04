@@ -192,8 +192,8 @@
             tg.MainButton.show();
         }
 
-        tg.onEvent('mainButtonClicked', function() {
-            tg.sendData(orderList.join('\n'));
+        Telegram.WebApp.onEvent('mainButtonClicked', function() {
+            tg.sendData(orderList.join('\n')); // Отправляем список выбранных товаров
         });
     </script>
 </body>
