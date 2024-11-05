@@ -131,6 +131,8 @@
         tg.MainButton.textColor = "#FFFFFF"; 
         tg.MainButton.color = "#0088cc"; 
         tg.MainButton.setParams({"color": "#006e9d"});
+        tg.MainButton.show(); 
+        tg.MainButton.enable(); 
     
         Telegram.WebApp.onEvent('mainButtonClicked', function() {
             // Получаем значение из поля input с id phone
