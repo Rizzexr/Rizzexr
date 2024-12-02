@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Web App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             color: var(--tg-theme-text-color);
@@ -34,7 +33,7 @@
             font-size: 16px;
             display: block;
             margin-top: 15px;
-            /* color: #333; */
+            color: var(--tg-theme-text-color);
         }
 
         input {
@@ -44,7 +43,7 @@
             width: 100%;
             border: 1px solid var(--tg-theme-text-color);
             border-radius: 5px;
-            /* color: #333; */
+            color: var(--tg-theme-text-color);
             box-sizing: border-box;
         }
 
@@ -72,11 +71,11 @@
         }
 
         .minus {
-            background-color: #ffefef;
+            background: rgba(255, 0, 0, 0.3);
         }
 
         .plus {
-            background-color: #e8fff0;
+            background: rgba(0, 255, 26, 0.3);
         }
         .icon{
             width: 20vh;
@@ -85,7 +84,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://github.com/Rizzexr/Rizzexr/blob/main/adopt/images/duck.gif?raw=true" class="icon">
+        <img src="https://imgcdn.sigstick.com/teZm6FhyAgp6zEjovwu3/6.png" class="icon">
         <!-- <h2 style="color: #333; margin-bottom: 10px;">Траты и Прибыль</h2> -->
         <label for="coffee">Траты</label>
         <input class="minus" type="number" id="coffee" placeholder="Кофе" />
@@ -97,20 +96,9 @@
         <button id="sendData" class="button">Отправить</button>
     </div>
 
-    <script>
-        let tg = window.Telegram.WebApp; // Telegram WebApp API
-        tg.expand(); // Расширить WebApp
-
-        document.getElementById('sendData').addEventListener('click', function () {
-            const data = {
-                coffee: document.getElementById('coffee').value || 0,
-                toilet: document.getElementById('toilet').value || 0,
-                other: document.getElementById('other').value || 0,
-                purchases: document.getElementById('purchases').value || 0,
-                profit: document.getElementById('profit').value || 0
-            };
-            tg.sendData(JSON.stringify(data)); // Отправляем все данные как JSON строку
-        });
-    </script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    let tg = window.Telegram.WebApp;
+</script>
 </body>
 </html>
