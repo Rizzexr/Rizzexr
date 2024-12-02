@@ -50,7 +50,7 @@
         input:focus {
             outline: none;
             border-color: #3390ec;
-            box-shadow: 0 0 5px rgba(51, 144, 236, 0.5);
+            /* box-shadow: 0 0 5px rgba(51, 144, 236, 0.5); */
         }
 
         .button {
@@ -87,12 +87,12 @@
         <img src="https://imgcdn.sigstick.com/teZm6FhyAgp6zEjovwu3/6.png" class="icon">
         <!-- <h2 style="color: #333; margin-bottom: 10px;">Траты и Прибыль</h2> -->
         <label for="coffee">Траты</label>
-        <input class="minus" type="number" id="coffee" placeholder="Кофе" />
-        <input class="minus" type="number" id="toilet" placeholder="Туалет" />
-        <input class="minus" type="number" id="other" placeholder="Прочее" />
-        <input class="minus" type="number" id="purchases" placeholder="Закупки" />
+        <input class="minus" id="coffee" placeholder="Кофе" />
+        <input class="minus" id="toilet" placeholder="Туалет" />
+        <input class="minus" id="other" placeholder="Прочее" />
+        <input class="minus" id="purchases" placeholder="Закупки" />
         <label for="profit">Прибыль</label>
-        <input class="plus" type="number" id="profit" placeholder="Сумма" />
+        <input class="plus" id="profit" placeholder="Сумма" />
         <button id="sendData" class="button">Отправить</button>
     </div>
 
