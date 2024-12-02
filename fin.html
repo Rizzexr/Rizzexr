@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Web App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
             color: var(--tg-theme-text-color);
@@ -71,14 +72,27 @@
         }
 
         .minus {
-            background: rgba(255, 0, 0, 0.3);
+            background: rgba(255, 0, 0, 0.2);
         }
 
         .plus {
-            background: rgba(0, 255, 26, 0.3);
+            background: rgba(0, 255, 26, 0.2);
         }
         .icon{
             width: 20vh;
+        }
+        .input-label {
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--tg-theme-text-color);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        #down{
+            color: #ff0000;
+        }
+        #up{
+            color: #00ff00;
         }
     </style>
 </head>
@@ -86,12 +100,14 @@
     <div class="container">
         <img src="https://imgcdn.sigstick.com/teZm6FhyAgp6zEjovwu3/6.png" class="icon">
         <!-- <h2 style="color: #333; margin-bottom: 10px;">Траты и Прибыль</h2> -->
-        <label for="coffee">Траты</label>
+        <label for="coffee"><i class="fas fa-arrow-down" id="down"></i> Траты <i class="fas fa-arrow-down" id="down"></i></label>
         <input class="minus" id="coffee" placeholder="Кофе" />
         <input class="minus" id="toilet" placeholder="Туалет" />
         <input class="minus" id="other" placeholder="Прочее" />
         <input class="minus" id="purchases" placeholder="Закупки" />
-        <label for="profit">Прибыль</label>
+        <label for="coffee" class="input-label">Оренда: 1000 в месяц</label>
+        <label for="coffee" class="input-label">Стол: 18 в день</label>
+        <label for="profit"><i class="fas fa-arrow-up" id="up"></i> Прибыль <i class="fas fa-arrow-up" id="up"></i></label>
         <input class="plus" id="profit" placeholder="Сумма" />
         <button id="sendData" class="button">Отправить</button>
     </div>
