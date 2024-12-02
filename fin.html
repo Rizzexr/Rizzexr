@@ -49,13 +49,13 @@
 
         input:focus {
             outline: none;
-            border-color: #3390ec;
+            border-color: #fff700;
             /* box-shadow: 0 0 5px rgba(51, 144, 236, 0.5); */
         }
 
         .button {
-            background: var(--tg-theme-button-text-color);
-            color: var(--tg-theme-button-color);
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
             border: none;
             font-size: 18px;
             padding: 12px;
@@ -99,6 +99,27 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     let tg = window.Telegram.WebApp;
+    let send = document.getElementById("sendData");
+
+    send.addEventListener("click", () => {
+        let coffee = document.getElementById("coffee").value;
+        let toilet = document.getElementById("toilet").value;
+        let other = document.getElementById("other").value;
+        let purchases = document.getElementById("purchases").value;
+        let profit = document.getElementById("profit").value;
+
+        let data = {
+            coffee: coffee,
+            toilet: toilet,
+            other: other,
+            purchases: purchases,
+            profit: profit,
+        }
+
+        tg.sendData(JSON.stringify(data));
+
+        tg.close();
+    });
 </script>
 </body>
 </html>
