@@ -1,66 +1,70 @@
 /* Общие стили */
-body{
+body {
     margin: 0;
     color: var(--tg-theme-text-color);
     background: var(--tg-theme-bg-color);
-
+    font-family: 'Inter', Arial, sans-serif; /* Современный шрифт */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    height: 100vh; /* Заполняет весь экран */
+    text-align: center;
+    overflow: hidden;
 }
 
 /* Хедер */
-header{
-    width: 100vi;
-
+header {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
-#user-icon{
-    width: 30vi;
-    border: rgba(255, 255, 255, 0.5) solid 3vi;
-    outline: 2vi solid rgba(255, 255, 255, 0.2);
+#user-icon {
+    width: 70px; /* Сделано более компактным */
+    height: 70px;
+    border: rgba(255, 255, 255, 0.5) solid 3px;
+    outline: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    margin-top: 5vi;
-    margin-bottom: 5vi;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
 
 #user-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
+/* Заголовок */
 h1 {
-    font-size: 26px;
-    /* color: #fff; */
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 600;
     margin: 10px 0;
+    color: var(--tg-theme-text-color);
 }
 
 /* Основной блок */
 main {
-    /* background: #fff; */
-    width: 100vi;
-    /* max-width: 400px; */
-    padding: 2vi;
-    border-top-left-radius: 10vi;
-    border-top-right-radius: 10vi;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Более светлый фон */
+    border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.6s ease-in-out;
-
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto; /* Добавлен скролл */
 }
 
+/* Секции */
 .section {
-    margin-bottom: 20px;
-    /* padding: 7vi; */
+    margin-bottom: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,55 +72,73 @@ main {
     flex-direction: column;
 }
 
+/* Метки */
 label {
     display: block;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
     color: #333;
-    margin-bottom: 5vi;
-    margin-top: 5vi;
+    margin-bottom: 5px;
 }
 
+/* Поля ввода */
 input {
-    display: block;
-    width: 80vi;
-    padding: 12px 16px;
+    width: 100%;
+    padding: 12px;
     font-size: 16px;
-    border: none;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 2px 4px var(--tg-theme-text-color);
-    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
     transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 input:focus {
     outline: none;
-    background: #ffffff;
-    box-shadow: 0 0 8px rgba(51, 144, 236, 0.5);
+    background: #fff;
+    box-shadow: 0 0 10px rgba(51, 144, 236, 0.5);
+    border-color: #3390ec;
 }
 
-.minus {
-    border-left: 5px solid #ff0000;
+/* Кнопки */
+.button {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
-.plus {
-    border-left: 5px solid #00ff08;
+.button:hover {
+    background: var(--tg-theme-secondary-bg-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: scale(0.97);
 }
 
 /* Информационные блоки */
 .info {
-    background: rgba(0, 0, 0, 0.2);
-    /* padding: 10vi; */
-    width: 90vi;
-    border-radius: 2vi;
-    box-shadow: 0 2px 8px var(--tg-theme-text-color);
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-size: 14px;
-    /* color: #555; */
+    color: #555;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: start;
 }
 
 .info p {
@@ -127,32 +149,6 @@ input:focus {
 .info strong {
     font-weight: bold;
     color: #333;
-}
-
-/* Кнопка */
-.button {
-    margin: 5vi;
-    background: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border: none;
-    padding: 14px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    width: 90vi;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px var(--tg-theme-text-color);
-    transition: all 0.3s ease;
-}
-
-.button:hover {
-    background: var(--tg-theme-secondary-bg-color);
-    box-shadow: 0 6px 15px var(--tg-theme-text-color);
-}
-
-.button:active {
-    transform: scale(0.97);
 }
 
 /* Иконки */
@@ -178,16 +174,21 @@ input:focus {
     }
 }
 
-
-content{
+/* Контент */
+content {
     background: #fff;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100vi;
-    margin: 0;
+    width: 100%;
+    padding: 20px;
 }
-h6{
-    font-size: 2vi;
+
+/* Заголовок для контента */
+h6 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--tg-theme-text-color);
 }
