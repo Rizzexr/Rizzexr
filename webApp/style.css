@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    background: linear-gradient(90deg, #0FD2A5, #0CFA00);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+header{
+    width: 100vi;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#user-icon{
+    width: 30vi;
+    border: rgba(255, 255, 255, 0.5) solid 3vi;
+    outline: 2vi solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-top: 5vi;
+    margin-bottom: 5vi;
+}
+h1{
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    margin-bottom: 5vi;
+}
+main{
+    background: #fff;
+    width: 100vi;
+    padding: 5vi;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin-top: 15px;
+    color: var(--tg-theme-text-color);
+}
+
+input {
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 16px;
+    width: 80%;
+    border: 1px solid var(--tg-theme-text-color);
+    border-radius: 5px;
+    color: var(--tg-theme-text-color);
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fff700;
+    /* box-shadow: 0 0 5px rgba(51, 144, 236, 0.5); */
+}
+
+.button {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    font-size: 18px;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 2vh;
+}
+
+.button:active {
+    background: var(--tg-theme-secondary-bg-color);
+}
+
+.minus {
+    /* background: rgba(255, 0, 0, 0.2); */
+    border-bottom: #ff0000 solid 0.8vi;
+}
+
+.plus {
+    /* background: rgba(0, 255, 26, 0.2); */
+    border-bottom: #ff0000 solid 0.8vi;
+}
+.icon{
+    width: 20vh;
+}
+.input-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 10px;
+    text-align: left;
+}
+#down{
+    color: #ff0000;
+}
+#up{
+    color: #00ff00;
+}

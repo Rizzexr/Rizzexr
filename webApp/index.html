@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="new_style.css">
+</head>
+<body>
+    <header>
+        <img id="user-icon" src="https://static-00.iconduck.com/assets.00/avatar-default-icon-2048x2048-h6w375ur.png" alt="User Avatar" class="avatar">
+        <h1>ПроФинБот</h1>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const tg = window.Telegram.WebApp;
+                const user = tg.initDataUnsafe.user;
+    
+                if (user) {
+                    const avatarUrl = user.photo_url || "https://static-00.iconduck.com/assets.00/avatar-default-icon-2048x2048-h6w375ur.png";
+                    const userName = user.first_name || "User";
+    
+                    const userIcon = document.getElementById("user-icon");
+                    userIcon.src = avatarUrl;
+                    userIcon.alt = userName;
+                }
+            });
+        </script>
+    </header>
+    <main>
+        <div class="section">
+            <label><i class="fas fa-arrow-down" id="down"></i> Траты</label>
+            <input class="minus" id="coffee" placeholder="Кофе" />
+            <input class="minus" id="toilet" placeholder="Туалет" />
+            <input class="minus" id="other" placeholder="Прочее" />
+            <input class="minus" id="purchases" placeholder="Закупки" />
+        </div>
+        <div class="info">
+            <p>Оренда: <strong>1000</strong> в месяц</p>
+            <p>Стол: <strong>18</strong> в день</p>
+        </div>
+        <div class="section">
+            <label><i class="fas fa-arrow-up" id="up"></i> Прибыль</label>
+            <input class="plus" id="profit" placeholder="Сумма" />
+        </div>
+        <button id="sendData" class="button">Отправить</button>
+    </main>
+    <!-- <content>
+        <h6>Разработано @Rizzexr</h6>
+    </content> -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let send = document.getElementById("sendData");
+    
+        send.addEventListener("click", () => {
+            let coffee = document.getElementById("coffee").value;
+            let toilet = document.getElementById("toilet").value;
+            let other = document.getElementById("other").value;
+            let purchases = document.getElementById("purchases").value;
+            let profit = document.getElementById("profit").value;
+    
+            let data = {
+                coffee: coffee,
+                toilet: toilet,
+                other: other,
+                purchases: purchases,
+                profit: profit,
+            }
+    
+            tg.sendData(JSON.stringify(data));
+    
+            tg.close();
+        });
+    </script>
+</body>
+</html>
