@@ -82,6 +82,7 @@ input {
     width: 80vi;
     padding: 12px 16px;
     font-size: 16px;
+    background: none;
     border: solid var(--tg-theme-text-color) 2px;
     border-radius: 12px;
     /* background: rgba(0, 0, 0, 0.1); */
@@ -129,7 +130,7 @@ input:focus {
 
 .info strong {
     font-weight: bold;
-    color: #333;
+    color: #ff0000;
 }
 
 /* Кнопка */
