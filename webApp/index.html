@@ -11,19 +11,34 @@
     <h1>ПроФинБот</h1>
     <main>
         <div class="section">
-            <label><i class="fas fa-arrow-down" id="down"></i> Траты</label>
-            <input class="minus" id="coffee" placeholder="Кофе" />
-            <input class="minus" id="toilet" placeholder="Туалет" />
-            <input class="minus" id="other" placeholder="Прочее" />
-            <input class="minus" id="purchases" placeholder="Закупки" />
+            <text><i class="fas fa-arrow-down" id="down"></i> Траты</text>
+            <div class="input-container">
+                <input class="minus" id="coffee" placeholder="0" />
+                <label for="amount">Кофе</label>
+              </div>
+              <div class="input-container">
+                <input class="minus" id="toilet" placeholder="0" />
+                <label for="amount">Туалет</label>
+              </div>
+              <div class="input-container">
+                <input class="minus" id="other" placeholder="0" />
+                <label for="amount">Прочее</label>
+              </div>
+              <div class="input-container">
+                <input class="minus" id="purchases" placeholder="0" />
+                <label for="amount">Закупки</label>
+              </div>
         </div>
         <div class="info">
             <p>Оренда: <strong>1000</strong> в месяц</p>
             <p>Стол: <strong>18</strong> в день</p>
         </div>
         <div class="section">
-            <label><i class="fas fa-arrow-up" id="up"></i> Прибыль</label>
-            <input class="plus" id="profit" placeholder="Сумма" />
+            <text><i class="fas fa-arrow-up" id="up"></i> Прибыль</text>
+            <div class="input-container">
+                <input class="plus" id="profit" placeholder="0" />
+                <label for="amount">Сумма</label>
+              </div>
         </div>
         <button id="sendData" class="button">Отправить</button>
     </main>

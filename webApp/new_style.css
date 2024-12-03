@@ -62,7 +62,7 @@ main {
     flex-direction: column;
 }
 
-label {
+text {
     display: block;
     font-size: 18px;
     font-weight: bold;
@@ -71,26 +71,58 @@ label {
     margin-top: 5vi;
 }
 
-input {
-    display: block;
-    width: 80vi;
+/* Контейнер для input */
+.input-container {
+    position: relative;
+    width: 90vi;
+    margin-top: 4vi;
+  }
+  
+  input {
+    width: 100%;
     padding: 12px 16px;
     font-size: 16px;
     background: none;
     color: var(--tg-theme-text-color);
     border: solid var(--tg-theme-text-color) 0.3vi;
-    /* border: solid #919191 0.3vi; */
     border-radius: 12px;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-input:focus {
     outline: none;
-    background: #ffffff;
-    color: #000;
-    box-shadow: 0 0 8px rgba(51, 144, 236, 0.5);
-}
+    transition: all 0.3s ease;
+  }
+  
+  /* Скрытие плейсхолдера */
+  input::placeholder {
+    color: transparent;
+  }
+  
+  /* Метка */
+  label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 16px;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-bg-color);
+    padding: 0 5px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* Анимация при фокусе */
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 12px;
+    font-size: 12px;
+    color: var(--tg-theme-button-color); /* Акцентный цвет */
+    border: solid var(--tg-theme-button-color) 0.3vi;
+  }
+  
+  /* Удаление бордера справа */
+  .input-container input:focus {
+    border-right-color: transparent;
+  }
+  
 
 .minus {
     border-left: 5px solid #ee4d4d;
