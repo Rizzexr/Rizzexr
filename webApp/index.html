@@ -5,7 +5,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="new_style.css">
+    <!-- <link rel="stylesheet" href="new_style.css"> -->
+     <style>
+
+body{
+    margin: 0;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-bg-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+header{
+    width: 100vi;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#user-icon{
+    width: 30vi;
+    border: rgba(255, 255, 255, 0.5) solid 3vi;
+    outline: 2vi solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-top: 5vi;
+    margin-bottom: 5vi;
+}
+
+#user-icon:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 26px;
+    color: var(--tg-theme-button-color);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+main {
+    width: 100vi;
+    padding: 2vi;
+    border-top-left-radius: 10vi;
+    border-top-right-radius: 10vi;
+    animation: fadeIn 0.6s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--tg-theme-text-color);
+    margin-bottom: 5vi;
+    margin-top: 5vi;
+}
+
+input {
+    display: block;
+    width: 80vi;
+    padding: 12px 16px;
+    font-size: 16px;
+    background: none;
+    color: var(--tg-theme-text-color);
+    border: solid var(--tg-theme-text-color) 0.3vi;
+    /* border: solid #919191 0.3vi; */
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 0 8px rgba(51, 144, 236, 0.5);
+}
+
+.minus {
+    border-left: 5px solid #ee4d4d;
+}
+
+.plus {
+    border-left: 5px solid #2f9c54;
+}
+
+.info {
+    width: 85vi;
+    border-radius: 2vi;
+    color: var(--tg-theme-text-color);
+    border: solid var(--tg-theme-text-color) 0.3vi;
+    padding: 2vi;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+}
+
+.info p {
+    margin: 0 0 5px 0;
+    font-weight: 500;
+}
+
+.info strong {
+    font-weight: bold;
+    color: #ee4d4d;
+}
+
+.button {
+    margin: 5vi;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 90vi;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: var(--tg-theme-secondary-bg-color);
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+#down {
+    color: #ee4d4d;
+    margin-right: 5px;
+    font-size: 3vi;
+}
+
+#up {
+    color: #2f9c54;
+    margin-right: 5px;
+    font-size: 3vi;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+content{
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vi;
+    margin: 0;
+}
+h6{
+    font-size: 2vi;
+}
+     </style>
 </head>
 <body>
     <h1>ПроФинБот</h1>
