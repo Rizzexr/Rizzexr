@@ -87,7 +87,7 @@ input {
     font-size: 16px;
     background: none;
     color: var(--tg-theme-text-color);
-    border: solid var(--tg-theme-text-color) 0.3vi;
+    border: solid var(--tg-theme-text-color) 0.2vi;
     /* border: solid #919191 0.3vi; */
     border-radius: 12px;
     margin-bottom: 10px;
@@ -95,10 +95,11 @@ input {
 }
 
 input:focus {
-    outline: none;
+    /* outline: none; */
+    outline: solid 0.2vi var(--tg-theme-button-color);
     background: #ffffff;
     color: #000;
-    box-shadow: 0 0 8px rgba(51, 144, 236, 0.5);
+    /* box-shadow: 0 0 8px rgba(51, 144, 236, 0.5); */
 }
 
 .minus {
