@@ -1,123 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="https://i.ibb.co/mq6SBcm/logo.png">
-        <meta property="og:title" content="11Б">
-        <meta property="og:image" content="https://i.ibb.co/pXB3cx7/ByPRIV.png">
-    
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J4QFC04CL"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-9J4QFC04CL');
-        </script>
-    
-        <title>11Б</title>
-        <script>
-            function isMobileDevice() {
-                return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            }
-    
-            window.onload = function() {
-                if (isMobileDevice()) {
-                    window.location.href = "mobile.html"; 
-                }
-            }
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="new_style.css">
+</head>
 <body>
-    <div id="clock">Загрузка...</div>
-    <div id="schedule">чезабретто</div>
+    <h1>ПроФинБот</h1>
     <main>
-        <a href="days.html"><h1>Расписание</h1></a>
-        <a href="requests.html"><h1>Книги</h1></a>
-        <a href="ring.html"><h1 id="green">Звонки</h1></a>
-        <a href="https://classroom.google.com/h" target="_blank"><!-- <div class="icon"><img src="logo/class.png" id="icon"></div> --><h1 id="new">Google Class</h1></a>
-        <p>by Ivan Presnyakov</p>
+        <div class="section">
+            <label><i class="fas fa-arrow-down" id="down"></i> Траты</label>
+            <input class="minus" id="coffee" placeholder="Кофе" />
+            <input class="minus" id="toilet" placeholder="Туалет" />
+            <input class="minus" id="other" placeholder="Прочее" />
+            <input class="minus" id="purchases" placeholder="Закупки" />
+        </div>
+        <div class="info">
+            <p>Оренда: <strong>1000</strong> в месяц</p>
+            <p>Стол: <strong>18</strong> в день</p>
+        </div>
+        <div class="section">
+            <label><i class="fas fa-arrow-up" id="up"></i> Прибыль</label>
+            <input class="plus" id="profit" placeholder="Сумма" />
+        </div>
+        <button id="sendData" class="button">Отправить</button>
     </main>
+    <!-- <content>
+        <h6>Разработано @Rizzexr</h6>
+    </content> -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        const lessons = [
-            {start: "08:00", end: "08:40"},
-            {start: "08:50", end: "09:30"},
-            {start: "09:40", end: "10:20"},
-            {start: "10:30", end: "11:10"},
-            {start: "11:25", end: "12:05"},
-            {start: "12:15", end: "12:55"},
-            {start: "13:00", end: "13:40"}
-        ];
+        let tg = window.Telegram.WebApp;
+        let send = document.getElementById("sendData");
     
-        function pad(num) {
-            return num.toString().padStart(2, '0');
-        }
+        send.addEventListener("click", () => {
+            let coffee = document.getElementById("coffee").value;
+            let toilet = document.getElementById("toilet").value;
+            let other = document.getElementById("other").value;
+            let purchases = document.getElementById("purchases").value;
+            let profit = document.getElementById("profit").value;
     
-        function getTimeRemaining(endTime) {
-            const now = new Date();
-            const end = new Date();
-            const [hours, minutes] = endTime.split(':');
-            end.setHours(hours);
-            end.setMinutes(minutes);
-            end.setSeconds(0);
-    
-            const diff = end - now;
-            if (diff <= 0) return null;
-    
-            const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000);
-    
-            return `${pad(minutesLeft)}:${pad(secondsLeft)}`;
-        }
-    
-        function getCurrentLesson() {
-            const now = new Date();
-            const nowTime = pad(now.getHours()) + ':' + pad(now.getMinutes());
-    
-            // Проверяем, начался ли учебный день (с 7:50 до окончания последнего урока)
-            const startDay = "07:50";
-            const endDay = "13:50";
-            if (nowTime < startDay || nowTime > endDay) {
-                document.getElementById('schedule').textContent = 'чезабретто';
-                return;
+            let data = {
+                coffee: coffee,
+                toilet: toilet,
+                other: other,
+                purchases: purchases,
+                profit: profit,
             }
     
-            // Определение текущего урока или перемены
-            for (let i = 0; i < lessons.length; i++) {
-                const lessonStart = lessons[i].start;
-                const lessonEnd = lessons[i].end;
+            tg.sendData(JSON.stringify(data));
     
-                // Если текущее время в пределах урока
-                if (nowTime >= lessonStart && nowTime <= lessonEnd) {
-                    const remainingTime = getTimeRemaining(lessonEnd);
-                    document.getElementById('schedule').textContent = `Урок ${i + 1}. До конца: ${remainingTime}`;
-                    return;
-                }
-    
-                // Если текущее время в пределах перемены перед уроком
-                if (i < lessons.length - 1 && nowTime > lessonEnd && nowTime < lessons[i + 1].start) {
-                    const remainingTime = getTimeRemaining(lessons[i + 1].start);
-                    document.getElementById('schedule').textContent = `Урок через ${i + 2}: ${remainingTime}`;
-                    return;
-                }
-            }
-        }
-    
-        function updateTime() {
-            const now = new Date();
-            const hours = pad(now.getHours());
-            const minutes = pad(now.getMinutes());
-            const seconds = pad(now.getSeconds());
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-    
-            getCurrentLesson();
-        }
-    
-        setInterval(updateTime, 1000);
-        updateTime(); // Запуск сразу при загрузке страницы
+            tg.close();
+        });
     </script>
 </body>
 </html>
