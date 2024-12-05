@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция</title>
+    <style>
+        #user-icon{
+    width: 30vi;
+    /* border: rgba(255, 255, 255, 0.5) solid 3vi; */
+    /* outline: 2vi solid rgba(255, 255, 255, 0.2); */
+    border-radius: 50%;
+    margin-top: 5vi;
+    margin-bottom: 5vi;
+}
+        body {
+            margin: 0;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            width: 100vi;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10vi;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: var(--tg-theme-text-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        h1 {
+            font-size: 26px;
+            color: var(--tg-theme-button-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        main {
+            width: 90vi;
+            padding: 2vi;
+            border-radius: 10vi;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        .button {
+            margin: 5vi 0;
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            border: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: var(--tg-theme-secondary-bg-color);
+        }
+
+        .button:active {
+            transform: scale(0.97);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info {
+            text-align: left;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .info strong {
+            color: var(--tg-theme-button-color);
+        }
+        .fixed-button {
+            position: fixed;
+            width: 80vi;
+            bottom: 5vi; /* Отступ от нижнего края */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translateX(-50%); /* Сдвигаем элемент влево на половину его ширины */
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+            /* transition: transform 0.3s ease, background-color 0.3s ease; */
+        }
+
+        .fixed-button:hover {
+            transform: translateX(-50%) scale(1.05); /* Добавляем эффект масштабирования */
+            /* background-color: var(--tg-theme-secondary-bg-color, #0056b3); */
+        }
+
+        .fixed-button:active {
+            transform: translateX(-50%) scale(0.95); /* Уменьшаем масштаб при нажатии */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ПРОФИНБОТ </h1>
+    <h2>от rizzexr</h2>
+    <img src="ezgif-7-36a88e2d89.gif" id="user-icon">
+    <h2>Инструкция</h2>
+</header>
+
+<main>
+    <div class="section">
+        <p class="info">
+            После нажатия кнопки <strong>Старт</strong> введите код, предоставленный разработчиком. 
+            После ввода вы получите три кнопки:
+        </p>
+    </div>
+
+    <div class="section">
+        <button class="button">Добавить данные</button>
+        <p class="info">
+            Нажав на эту кнопку, появится новая кнопка. После ее нажатия откроется мини-приложение, где вы сможете:
+        </p>
+        <ul class="info">
+            <li>Ввести траты за день (чай, туалет, прочее, аренда и стол включены).</li>
+            <li>Ввести прибыль (вводите данные после рабочего дня).</li>
+            <li>Нажать кнопку для сохранения данных.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <button class="button">Скачать отчет</button>
+        <p class="info">
+            После нажатия появятся две кнопки:
+        </p>
+        <ul class="info">
+            <li><strong>Этот месяц</strong> — скачивает отчет за текущий месяц в виде таблицы.</li>
+            <li><strong>Другой месяц</strong> — открывает окно, где нужно ввести месяц и год (например, 12 2024), после чего отчет за выбранный период будет скачан.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <button class="button">Инструкция</button>
+        <p class="info">
+            Показывает это окно снова, если потребуется напомнить действия.
+        </p>
+    </div>
+</main>
+<button id="sendData" class="fixed-button">Закрыть</button>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let send = document.getElementById("sendData");
+    
+        send.addEventListener("click", () => {
+            tg.close();
+        });
+    </script>
+</body>
+</html>
