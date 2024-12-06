@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обо мне</title>
+    <title>Инструкция</title>
     <style>
+        #user-icon{
+    width: 30vi;
+    /* border: rgba(255, 255, 255, 0.5) solid 3vi; */
+    /* outline: 2vi solid rgba(255, 255, 255, 0.2); */
+    border-radius: 50%;
+    margin-top: 5vi;
+    margin-bottom: 5vi;
+}
         body {
             margin: 0;
             color: var(--tg-theme-text-color);
@@ -17,131 +25,186 @@
         }
 
         header {
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 20px;
+            width: 100vi;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10vi;
         }
 
+        h2 {
+            font-size: 26px;
+            color: var(--tg-theme-text-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
         h1 {
             font-size: 26px;
             color: var(--tg-theme-button-color);
             font-weight: bold;
+            margin: 10px 0;
         }
 
         main {
-            width: 90%;
-            padding: 15px;
-            border-radius: 10px;
+            width: 90vi;
+            padding: 2vi;
+            border-radius: 10vi;
+            /* background: #fff; */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            animation: fadeIn 0.6s ease-in-out;
         }
 
-        section {
+        .section {
+            text-align: center;
+        }
+
+        .button {
+            margin: 5vi 0;
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            border: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: var(--tg-theme-secondary-bg-color);
+        }
+
+        .button:active {
+            transform: scale(0.97);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info {
+            text-align: left;
             line-height: 1.6;
+            font-size: 14px;
         }
 
-        h2 {
-            font-size: 20px;
-            color: var(--tg-theme-text-color);
-            margin-bottom: 10px;
+        .info strong {
+            color: var(--tg-theme-button-color);
+        }
+        .fixed-button {
+            position: fixed;
+            width: 80vi;
+            bottom: 5vi; /* Отступ от нижнего края */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translateX(-50%); /* Сдвигаем элемент влево на половину его ширины */
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+            /* transition: transform 0.3s ease, background-color 0.3s ease; */
         }
 
-        ul {
-            padding-left: 20px;
-            list-style: none;
+        .fixed-button:hover {
+            transform: translateX(-50%) scale(1.05); /* Добавляем эффект масштабирования */
+            /* background-color: var(--tg-theme-secondary-bg-color, #0056b3); */
         }
 
-        ul li {
-            margin-bottom: 10px;
+        .fixed-button:active {
+            transform: translateX(-50%) scale(0.95); /* Уменьшаем масштаб при нажатии */
         }
-
-        ul li a {
-            color: var(--tg-theme-link-color);
-            text-decoration: none;
+        #soc{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
-
-        ul li a:hover {
-            text-decoration: underline;
+        .icon-soc{
+            width: 15vi;
+            margin-left: 4vi;
+            margin-right: 4vi;
         }
-
+        .row{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Обо мне</h1>
-    </header>
 
-    <main>
-        <section>
-            <h2>Соцсети:</h2>
-            <ul>
-                <li>Instagram</li>
-                <li>Telegram: @Rizoil</li>
-                <li>TikTok</li>
-            </ul>
-        </section>
+<header>
+    <h1>RIZZEXR</h1>
+    <h2>Иван Пресняков</h2>
+    <!-- <img src="ezgif-7-36a88e2d89.gif" id="user-icon"> -->
+</header>
 
-        <section>
-            <h2>Каналы/форумы:</h2>
-            <ul>
-                <li>Технологии и ПК</li>
-                <li>DTF (<a href="https://dtf.ru/u/911470" target="_blank">https://dtf.ru/u/911470</a>)</li>
-            </ul>
-        </section>
+<main>
+    <div class="section" id="soc">
+        <h1>Соцсети</h1>
+        <div class="row">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968804.png" class="icon-soc">
+            <img src="https://img.freepik.com/premium-photo/square-tiktok-logo-isolated-white-background_469489-1029.jpg" class="icon-soc">
+            <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/27_Artstation_logo_logos-512.png" class="icon-soc">
+        </div>
+    </div>
 
-        <section>
-            <h2>Работы:</h2>
-            <ul>
-                <li>TG3D (<a href="https://t.me/IvanPresnyakov" target="_blank">https://t.me/IvanPresnyakov</a>)</li>
-                <li>Artstation</li>
-            </ul>
-        </section>
+    <div class="section">
+        <h1>Работы</h1>
+        <!-- <p class="info">
+            После нажатия появятся две кнопки:
+        </p> -->
+        <ul class="info">
+            <li><strong>3D</strong> — Telegram</li>
+            <li><strong>3D</strong> — Artstation</li>
+        </ul>
+    </div>
 
-        <section>
-            <h2>Навыки:</h2>
-            <ul>
-                <li><strong>Программирование:</strong></li>
-                <ul>
-                    <li>Telegram mini-apps</li>
-                    <li>Python</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>C# (ASP.NET MVC)</li>
-                    <li>Linux Terminal</li>
-                </ul>
-                <li><strong>3D:</strong></li>
-                <ul>
-                    <li>Blender</li>
-                    <li>UE</li>
-                    <li>Unity</li>
-                    <li>Gaea</li>
-                    <li>Bridge</li>
-                    <li>SP</li>
-                </ul>
-                <li><strong>Видео и фото редакция:</strong></li>
-                <ul>
-                    <li>Blender</li>
-                    <li>Krita</li>
-                    <li>Ae</li>
-                    <li>Ps</li>
-                    <li>LgR</li>
-                    <li>DaVinchi Resolve</li>
-                    <li>Gimp</li>
-                    <li>Aa</li>
-                    <li>FL Studio</li>
-                </ul>
-                <li><strong>Музыка:</strong></li>
-                <ul>
-                    <li>Гитара</li>
-                    <li>Фортепиано</li>
-                    <li>Хор</li>
-                </ul>
-            </ul>
-        </section>
-    </main>
+    <div class="section">
+        <h1>Навыки</h1>
+    </div>
+    <div class="section">
+        <h1>Программирование</h1>
+        <!-- <p class="info">
+            Показывает это окно снова, если потребуется напомнить действия.
+        </p> -->
+        <ul class="info">
+            <li>Telegram Mini Apps</li>
+            <li>C# (ASP NET MVC)</li>
+            <li>Python</li>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
+    </div>
+</main>
+<button id="sendData" class="fixed-button">Закрыть</button>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let send = document.getElementById("sendData");
+    
+        send.addEventListener("click", () => {
+            tg.close();
+        });
+    </script>
 </body>
 </html>
