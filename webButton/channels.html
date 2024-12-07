@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выберите канал</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Выберите канал</h1>
+    <div id="channels"></div>
+    <script>
+        Telegram.WebApp.ready();
+
+        // Получение данных пользователя
+        const userData = Telegram.WebApp.initDataUnsafe;
+
+        // Список каналов (для примера; заменить API для динамической загрузки)
+        const channels = [
+            { id: 12345, title: "Мой канал 1" },
+            { id: 67890, title: "Мой канал 2" }
+        ];
+
+        const container = document.getElementById("channels");
+        channels.forEach(channel => {
+            const button = document.createElement("button");
+            button.textContent = `Добавить в: ${channel.title}`;
+            button.onclick = () => {
+                // Обработка выбора канала
+                alert(`Вы выбрали канал: ${channel.title}`);
+                Telegram.WebApp.close(); // Закрыть WebApp
+            };
+            container.appendChild(button);
+        });
+    </script>
+</body>
+</html>
