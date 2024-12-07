@@ -239,7 +239,7 @@ h6{
      </style>
 </head>
 <body>
-    <h1>ПроФинБот</h1>
+    <h1>ReSend</h1>
     <main>
         <!-- <img src="ezgif-3-651b11ef55.gif" id="user-icon"> -->
         <div class="section">
@@ -248,7 +248,7 @@ h6{
         </div>
         <div class="section">
             <label for="year">Текст кнопки</label>
-            <input class="date-input" type="text" id="button-text" placeholder="Нажать" maxlength="4" />
+            <input class="date-input" type="text" id="button" placeholder="Нажать" maxlength="4" />
         </div>
         <div class="section">
             <label for="year">Ссылка для кнопки</label>
@@ -256,7 +256,7 @@ h6{
         </div>
         <div class="section">
             <label for="year">Текст сообщения</label>
-            <input class="date-input" type="text" id="button-text" placeholder="Бла бла бла" maxlength="4" />
+            <input class="date-input" type="text" id="text" placeholder="Бла бла бла" maxlength="4" />
         </div>
         
         
@@ -271,13 +271,17 @@ h6{
         let send = document.getElementById("sendData");
     
         send.addEventListener("click", () => {
-            let month = document.getElementById("month").value;
-            let year = document.getElementById("year").value;
+            let id = document.getElementById("id").value;
+            let button = document.getElementById("button").value;
+            let url = document.getElementById("url").value;
+            let text = document.getElementById("text").value;
     
             let data = {
-                month: month,
-                year: year,
-                window_type: "second_window"
+                id: id,
+                button: button,
+                url: url,
+                text: text,
+                window_type: "first_window"
             }
     
             tg.sendData(JSON.stringify(data));
