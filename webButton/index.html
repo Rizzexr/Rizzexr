@@ -150,6 +150,20 @@ input:focus {
     font-weight: bold;
     color: #ee4d4d;
 }
+.button-negative{
+    margin: 5vi;
+    background: rgb(195, 7, 7);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 90vi;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
 .button {
     margin: 5vi;
@@ -241,7 +255,7 @@ h6{
 <body>
     <h1>ReSend</h1>
     <main>
-        <h6>❗️Добавь бота в канал как админа❗️</h6>
+        <!-- <h6>❗️Добавь бота в канал как админа❗️</h6> -->
         <!-- <img src="ezgif-3-651b11ef55.gif" id="user-icon"> -->
         <div class="section">
             <label for="month">ID канала</label>
@@ -261,7 +275,8 @@ h6{
         </div>
         
         
-        <button id="sendData" class="button">Отправить</button>
+        <button id="sendData" class="button-negative">Отправить</button>
+        <button id="close" class="button">Отправить</button>
     </main>
     <!-- <content>
         <h6>Разработано @Rizzexr</h6>
@@ -287,6 +302,12 @@ h6{
     
             tg.sendData(JSON.stringify(data));
     
+            tg.close();
+        });
+
+        let zakryt = document.getElementById("close");
+    
+        zakryt.addEventListener("click", () => {
             tg.close();
         });
     </script>
