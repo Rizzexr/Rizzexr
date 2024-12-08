@@ -296,46 +296,42 @@ h6{
     </content> -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        document.getElementById('toggleInput').addEventListener('change', function() {
-        const textInputContainer = document.getElementById('textInputContainer');
-        if (this.checked) {
-            textInputContainer.style.display = 'block';
-        } else {
-            textInputContainer.style.display = 'none';
-        }
-    });
+document.getElementById('toggleInput').addEventListener('change', function() {
+    const textInputContainer = document.getElementById('textInputContainer');
+    textInputContainer.style.display = this.checked ? 'block' : 'none';
+});
 
-        let tg = window.Telegram.WebApp;
-        let send = document.getElementById("sendData");
-    
-        send.addEventListener("click", () => {
-            let id = document.getElementById("id").value;
-            let button = document.getElementById("button").value;
-            let url = document.getElementById("url").value;
-            let text = document.getElementById("text").value;
-            let image = document.getElementById("image-url").value;
-            let checkboxValue = document.getElementById("checkbox").checked;
-    
-            let data = {
-                id: id,
-                button: button,
-                url: url,
-                text: text,
-                image: image,
-                checkbox: checkboxValue,
-                window_type: "first_window"
-            }
-    
-            tg.sendData(JSON.stringify(data));
-    
-            tg.close();
-        });
+let tg = window.Telegram.WebApp;
+let send = document.getElementById("sendData");
 
-        // let zakryt = document.getElementById("close");
-    
-        // zakryt.addEventListener("click", () => {
-        //     tg.close();
-        // });
+send.addEventListener("click", () => {
+    let id = document.getElementById("id").value.trim();
+    let button = document.getElementById("button").value.trim();
+    let url = document.getElementById("url").value.trim();
+    let text = document.getElementById("text").value.trim();
+    let imageInput = document.getElementById("toggleInput").checked
+        ? document.getElementById("image-url").value.trim()
+        : null;
+
+    if (!id || !button || !url || !text) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    let data = {
+        id,
+        button,
+        url,
+        text,
+        image: imageInput,
+        checkbox: document.getElementById("toggleInput").checked,
+        window_type: "first_window",
+    };
+
+    tg.sendData(JSON.stringify(data));
+    tg.close();
+});
+
     </script>
 </body>
 </html>
