@@ -249,12 +249,25 @@ h6{
     color: #aaa;
 }
 
+.text_input {
+        display: none;
+    }
 
      </style>
 </head>
 <body>
     <h1>ReSend</h1>
     <main>
+        <div class="section">
+            <label class="checkbox">
+                <span class="label_text">Добавить фото</span>
+                <input type="checkbox" id="toggleInput">
+            </label>
+            <div class="text_input" id="textInputContainer">
+                <input type="text" id="image-url" placeholder="ID фото (от бота)">
+            </div>
+        </div>
+        
         <!-- <h6>❗️Добавь бота в канал как админа❗️</h6> -->
         <!-- <img src="ezgif-3-651b11ef55.gif" id="user-icon"> -->
         <div class="section">
@@ -283,6 +296,15 @@ h6{
     </content> -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        document.getElementById('toggleInput').addEventListener('change', function() {
+        const textInputContainer = document.getElementById('textInputContainer');
+        if (this.checked) {
+            textInputContainer.style.display = 'block';
+        } else {
+            textInputContainer.style.display = 'none';
+        }
+    });
+
         let tg = window.Telegram.WebApp;
         let send = document.getElementById("sendData");
     
@@ -291,12 +313,16 @@ h6{
             let button = document.getElementById("button").value;
             let url = document.getElementById("url").value;
             let text = document.getElementById("text").value;
+            let image = document.getElementById("image-url").value;
+            let checkboxValue = document.getElementById("checkbox").checked;
     
             let data = {
                 id: id,
                 button: button,
                 url: url,
                 text: text,
+                image: image,
+                checkbox: checkboxValue,
                 window_type: "first_window"
             }
     
