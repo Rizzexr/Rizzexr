@@ -109,7 +109,7 @@
         // Данные маршрутов
         const routes = [
             {
-                id: "1m",
+                id: "1М",
                 name: "1M",
                 color: "#ff5e5e",
                 coordinates: [
@@ -166,7 +166,7 @@
                 ]
             },
             {
-                id: "9B",
+                id: "9Б",
                 name: "9Б",
                 color: "#ff9966",
                 coordinates: [
@@ -237,31 +237,42 @@
         ];
 
         let activeRouteLayer = null;
+let activeStopMarkers = []; // Массив для хранения маркеров остановок
 
-        // Функция для отображения маршрута
-        function showRoute(route) {
-            // Удаляем предыдущий маршрут
-            if (activeRouteLayer) {
-                map.removeLayer(activeRouteLayer);
-            }
+// Функция для отображения маршрута
+function showRoute(route) {
+    // Удаляем предыдущий маршрут и остановки
+    if (activeRouteLayer) {
+        map.removeLayer(activeRouteLayer);
+    }
+    
+    // Удаляем предыдущие маркеры остановок
+    activeStopMarkers.forEach(marker => {
+        map.removeLayer(marker);
+    });
+    activeStopMarkers = []; // Очищаем массив маркеров
 
-            // Отображаем новый маршрут
-            const line = L.polyline(route.coordinates, {
-                color: route.color,
-                weight: 5
-            }).addTo(map);
+    // Отображаем новый маршрут
+    const line = L.polyline(route.coordinates, {
+        color: route.color,
+        weight: 5
+    }).addTo(map);
 
-            route.stops.forEach(stop => {
-                L.marker(stop.coords, { icon: createCustomIcon(route.color) })
-                    .addTo(map)
-                    .bindPopup(`<b>${stop.name}</b><br>${route.name}`);
-            });
+    route.stops.forEach(stop => {
+        const marker = L.marker(stop.coords, { icon: createCustomIcon(route.color) })
+            .addTo(map)
+            .bindPopup(`<b>${stop.name}</b><br>${route.name}`);
+        
+        // Добавляем маркер остановки в массив
+        activeStopMarkers.push(marker);
+    });
 
-            // Увеличиваем карту, чтобы маршрут был виден
-            map.fitBounds(line.getBounds());
+    // Увеличиваем карту, чтобы маршрут был виден
+    // map.fitBounds(line.getBounds());
 
-            activeRouteLayer = line;
-        }
+    activeRouteLayer = line;
+}
+
 
         // Создаем кастомный маркер
         function createCustomIcon(color) {
