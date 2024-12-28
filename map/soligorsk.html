@@ -238,6 +238,7 @@
 
         let activeRouteLayer = null;
 let activeStopMarkers = []; // Массив для хранения маркеров остановок
+let userLocationMarker = null; // Маркер для текущего местоположения
 
 // Функция для отображения маршрута
 function showRoute(route) {
@@ -273,16 +274,60 @@ function showRoute(route) {
     activeRouteLayer = line;
 }
 
+// Создаем кастомный маркер для остановок
+function createCustomIcon(color) {
+    return L.divIcon({
+        className: "custom-icon",
+        html: `<div style="background: ${color}; width: 15px; height: 15px; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);"></div>`,
+        iconSize: [15, 15],
+        iconAnchor: [7.5, 7.5]
+    });
+}
 
-        // Создаем кастомный маркер
-        function createCustomIcon(color) {
-            return L.divIcon({
-                className: "custom-icon",
-                html: `<div style="background: ${color}; width: 15px; height: 15px; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);"></div>`,
-                iconSize: [15, 15],
-                iconAnchor: [7.5, 7.5]
-            });
-        }
+// Создаем кастомный маркер для текущего местоположения
+function createUserLocationIcon() {
+    return L.divIcon({
+        className: "user-location-icon",
+        html: `<div style="background: blue; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);"></div>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10] // Центрируем маркер
+    });
+}
+
+// Функция для отображения текущего местоположения
+function showUserLocation() {
+    // Проверяем, поддерживает ли браузер геолокацию
+    if (navigator.geolocation) {
+        map.locate({ setView: true, maxZoom: 16 });
+
+        // Обработчик успешного получения местоположения
+        map.on('locationfound', function(e) {
+            // Удаляем старый маркер, если он существует
+            if (userLocationMarker) {
+                map.removeLayer(userLocationMarker);
+            }
+
+            // Создаем новый маркер с синим кружком
+            userLocationMarker = L.marker(e.latlng, { icon: createUserLocationIcon() })
+                .addTo(map)
+                .bindPopup("Я здесь");
+
+            // Выводим текст с координатами
+            console.log("Ваши координаты: " + e.latlng.lat + ", " + e.latlng.lng);
+        });
+
+        // Обработчик ошибки получения местоположения
+        map.on('locationerror', function() {
+            alert("Не удалось определить ваше местоположение");
+        });
+    } else {
+        alert("Ваш браузер не поддерживает геолокацию");
+    }
+}
+
+// Вызов функции для отображения местоположения
+showUserLocation();
+
 
         // Создаем кнопки маршрутов
         const routesContainer = document.getElementById('routesContainer');
