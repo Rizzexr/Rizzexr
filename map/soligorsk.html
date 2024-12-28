@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маршруты автобусов</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .route-selector {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .routes-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        .route-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff5e5e, #ff9966);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .route-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 15px rgba(255, 96, 96, 0.8);
+        }
+
+        .route-button.active {
+            background: linear-gradient(45deg, #66ff66, #33cc33);
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0a0a0a;
+            color: #ff5e5e;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000;
+            font-size: 1.2em;
+            border-top: 2px solid #ff5e5e;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="route-selector">
+        <div class="routes-container" id="routesContainer">
+            <!-- Кнопки маршрутов будут добавлены динамически -->
+        </div>
+    </div>
+    <div class="bottom-bar">
+        by IvanPresnyakov
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Создаем карту
+        const map = L.map('map').setView([52.79236, 27.53192], 13); // Центр карты (Киев)
+
+        // Тёмная тема карты
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Данные маршрутов
+        const routes = [
+            {
+                id: "1m",
+                name: "1M",
+                color: "#ff5e5e",
+                coordinates: [
+                    [52.79128, 27.50125],
+                    [52.79131, 27.49417],
+                    [52.78681, 27.49408],
+                    [52.78675, 27.50197],
+                    [52.78144, 27.50186],
+                    [52.78136, 27.50811],
+                    [52.78147, 27.50903],
+                    [52.78975, 27.53592],
+                    [52.78403, 27.54069],
+                    [52.78642, 27.54842],
+                    [52.78656, 27.54847],
+                    [52.78667, 27.54833],
+                    [52.78683, 27.54803],
+                    [52.79211, 27.54361],
+                    [52.79239, 27.54342],
+                    [52.79322, 27.54272],
+                    [52.7935, 27.54239],
+                    [52.79667, 27.53975],
+                    [52.79711, 27.53958],
+                    [52.79767, 27.53981],
+                    [52.79842, 27.53981],
+                    [52.79947, 27.53997],
+                    [52.80022, 27.54033],
+                    [52.80089, 27.54122],
+                    [52.80225, 27.54342],
+                    [52.80283, 27.54392],
+                    [52.80567, 27.54481],
+                    [52.80647, 27.54564],
+                    [52.80731, 27.54731],
+                    [52.81506, 27.56697],
+                ],
+                stops: [
+                    { name: "Октябрьская", coords: [52.79139, 27.50122] },
+                    { name: "Подольская", coords: [52.79061, 27.494] },
+                    { name: "Поликлинника", coords: [52.78672, 27.49544] },
+                    { name: "Улица Молодежная", coords: [52.78611, 27.50181] },
+                    { name: "Улица Заслонова", coords: [52.78131, 27.50306] },
+                    { name: "Микрорайон 12", coords: [52.78219, 27.512] },
+                    { name: "Фабрика Купалинка", coords: [52.78425, 27.51847] },
+                    { name: "Фабрика Калинка", coords: [52.78564, 27.52297] },
+                    { name: "Собор Рождества Христова", coords: [52.78761, 27.52922] },
+                    { name: "Улица Ленина", coords: [52.78906, 27.53633] },
+                    { name: "Юбилейная", coords: [52.78661, 27.53839] },
+                    { name: "Техникум", coords: [52.78558, 27.54614] },
+                    { name: "Магазин Шахтер", coords: [52.78939, 27.546] },
+                    { name: "Вокзал", coords: [52.79275, 27.54333] },
+                    { name: "Стадион Строитель", coords: [52.79858, 27.54] },
+
+                    { name: "1-ое рудоуправление", coords: [52.81164, 27.5585] },
+                    { name: "Автобусный парк 1", coords: [52.81356, 27.56339] },
+                    { name: "Калийспецтранс", coords: [52.815, 27.56706] },
+                ]
+            },
+            // {
+            //     id: "22",
+            //     name: "Маршрут 2",
+            //     color: "blue",
+            //     coordinates: [
+            //         [50.4451, 30.5200],
+            //         [50.4471, 30.5220],
+            //         [50.4501, 30.5270],
+            //         [50.4531, 30.5320]
+            //     ],
+            //     stops: [
+            //         { name: "Остановка A", coords: [50.4451, 30.5200] },
+            //         { name: "Остановка B", coords: [50.4471, 30.5220] }
+            //     ]
+            // },
+            // {
+            //     id: "3м",
+            //     name: "Маршрут 3",
+            //     color: "green",
+            //     coordinates: [
+            //         [50.4551, 30.5100],
+            //         [50.4571, 30.5150],
+            //         [50.4601, 30.5200],
+            //         [50.4651, 30.5250]
+            //     ],
+            //     stops: [
+            //         { name: "Остановка X", coords: [50.4551, 30.5100] },
+            //         { name: "Остановка Y", coords: [50.4601, 30.5200] }
+            //     ]
+            // }
+        ];
+
+        let activeRouteLayer = null;
+
+        // Функция для отображения маршрута
+        function showRoute(route) {
+            // Удаляем предыдущий маршрут
+            if (activeRouteLayer) {
+                map.removeLayer(activeRouteLayer);
+            }
+
+            // Отображаем новый маршрут
+            const line = L.polyline(route.coordinates, {
+                color: route.color,
+                weight: 5
+            }).addTo(map);
+
+            route.stops.forEach(stop => {
+                L.marker(stop.coords, { icon: createCustomIcon(route.color) })
+                    .addTo(map)
+                    .bindPopup(`<b>${stop.name}</b><br>${route.name}`);
+            });
+
+            // Увеличиваем карту, чтобы маршрут был виден
+            map.fitBounds(line.getBounds());
+
+            activeRouteLayer = line;
+        }
+
+        // Создаем кастомный маркер
+        function createCustomIcon(color) {
+            return L.divIcon({
+                className: "custom-icon",
+                html: `<div style="background: ${color}; width: 15px; height: 15px; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);"></div>`,
+                iconSize: [15, 15],
+                iconAnchor: [7.5, 7.5]
+            });
+        }
+
+        // Создаем кнопки маршрутов
+        const routesContainer = document.getElementById('routesContainer');
+        routes.forEach(route => {
+            const button = document.createElement('button');
+            button.classList.add('route-button');
+            button.textContent = route.id;
+
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.route-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                showRoute(route);
+            });
+
+            routesContainer.appendChild(button);
+        });
+    </script>
+</body>
+</html>
