@@ -73,13 +73,31 @@
             left: 0;
             width: 100%;
             background-color: #0a0a0a;
-            color: #ff5e5e;
+            color: #0a0a0a;
+            /* color: #ff5e5e; */
             text-align: center;
             padding: 10px 0;
             z-index: 1000;
             font-size: 1.2em;
-            border-top: 2px solid #ff5e5e;
+            /* border-top: 2px solid #ff5e5e; */
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #where{
+            /* display: flex; */
+            /* justify-content: center/; */
+            /* align-items: center; */
+            /* width: 50px; */
+            /* height: 50px; */
+            font-size: 2rem;
+            padding: 3vi;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff5e5e, #ff9966);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
     </style>
 </head>
@@ -91,20 +109,45 @@
         </div>
     </div>
     <div class="bottom-bar">
-        by IvanPresnyakov
+        <button onclick="findUserLocation()" id="where">Где я</button>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Создаем карту
-        const map = L.map('map').setView([52.79236, 27.53192], 13); // Центр карты (Киев)
+        const map = L.map('map').setView([52.79236, 27.53192], 13); // Центр карты 
 
         // Тёмная тема карты
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
             subdomains: 'abcd',
-            maxZoom: 19
+            maxZoom: 19,
         }).addTo(map);
+
+        // Функция для поиска и отображения местоположения пользователя
+        function findUserLocation() {
+            if (navigator.geolocation) {
+                map.locate({ setView: true, maxZoom: 16 });
+
+                // Обработчик успешного получения местоположения
+                map.on('locationfound', function (e) {
+                    if (userLocationMarker) {
+                        map.removeLayer(userLocationMarker);
+                    }
+                    userLocationMarker = L.marker(e.latlng, { icon: createUserLocationIcon() })
+                        .addTo(map)
+                        .bindPopup("Вы здесь")
+                        .openPopup();
+                });
+
+                // Обработчик ошибки
+                map.on('locationerror', function () {
+                    alert("Нет доступа к геолокации");
+                });
+            } else {
+                alert("Ваш браузер не поддерживает геолокацию");
+            }
+        }
 
         // Данные маршрутов
         const routes = [
@@ -145,8 +188,8 @@
                     [52.81506, 27.56697],
                 ],
                 stops: [
-                    { name: "Октябрьская", coords: [52.79139, 27.50122] },
-                    { name: "Подольская", coords: [52.79061, 27.494] },
+                    { name: "Улица Октябрьская", coords: [52.79139, 27.50122] },
+                    { name: "Улица Подольская", coords: [52.79061, 27.494] },
                     { name: "Поликлинника", coords: [52.78672, 27.49544] },
                     { name: "Улица Молодежная", coords: [52.78611, 27.50181] },
                     { name: "Улица Заслонова", coords: [52.78131, 27.50306] },
@@ -163,6 +206,24 @@
                     { name: "1-ое рудоуправление", coords: [52.81164, 27.5585] },
                     { name: "Автобусный парк 1", coords: [52.81356, 27.56339] },
                     { name: "Калийспецтранс", coords: [52.815, 27.56706] },
+
+                    { name: "Калийспецтранс", coords: [52.815861, 27.568472] },
+                    { name: "Автобусный парк 1", coords: [52.813748, 27.563113] },
+                    { name: "1-ое рудоуправление", coords: [52.811485, 27.557341] },
+                    { name: "Стадион Строитель", coords: [52.799483, 27.539752] },
+                    { name: "Вокзал", coords: [52.792640, 27.542725] },
+                    { name: "Магазин шахтер", coords: [52.788837, 27.546122] },
+                    { name: "Техникум", coords: [52.785375, 27.544457] },
+                    { name: "Юбилейная", coords: [52.787235, 27.538371] },
+                    { name: "Тц Корона", coords: [52.789147, 27.533255] },
+                    { name: "Собор Рождества Христова", coords: [52.787356, 27.527456] },
+                    { name: "Фабрика Калинка", coords: [52.785929, 27.522702] },
+                    { name: "Фабрика Купалинка", coords: [52.783465, 27.514938] },
+                    { name: "Микрорайон 12", coords: [52.782013, 27.510050] },
+                    { name: "Улица Заслонова", coords: [52.782102, 27.502199] },
+                    { name: "Улица Судиловского", coords: [52.786942, 27.501149] },
+                    { name: "Поликлинника", coords: [52.787509, 27.494388] },
+                    { name: "Улица Октябрьская", coords: [52.791044, 27.495230] },
                 ]
             },
             {
@@ -217,6 +278,19 @@
                     { name: "Поликлинника", coords: [52.777355, 27.532736] },
                     { name: "Санаторий березка", coords: [52.774182, 27.534269] },
                     { name: "Храм Блаженной Матроны", coords: [52.771419, 27.534616] },
+
+                    { name: "Храм Блаженной Матроны", coords: [52.771419, 27.534616] },
+                    { name: "Санаторий березка", coords: [52.774686, 27.534577] },
+                    { name: "Поликлинника", coords: [52.779142, 27.531658] },
+                    { name: "Хлебозавод", coords: [52.784557, 27.525957] },
+                    { name: "Собор Рождества Христова", coords: [52.78761, 27.52922] },
+                    { name: "Улица Ленина", coords: [52.78906, 27.53633] },
+                    { name: "Юбилейная", coords: [52.78661, 27.53839] },
+                    { name: "Техникум", coords: [52.78558, 27.54614] },
+                    { name: "Магазин Шахтер", coords: [52.78939, 27.546] },
+                    { name: "Вокзал", coords: [52.79275, 27.54333] },
+                    { name: "Покровка", coords: [52.798770, 27.543418] }
+
                 ]
             },
             // {
@@ -234,6 +308,66 @@
             //         { name: "Остановка Y", coords: [50.4601, 30.5200] }
             //     ]
             // }
+            {
+                id: "11В",
+                name: "11В",
+                color: "#10e629",
+                coordinates: [
+                    [52.79128, 27.50125],
+                    [52.79131, 27.49417],
+                    [52.78681, 27.49408],
+                    [52.78675, 27.50197],
+                    [52.78144, 27.50186],
+                    [52.78136, 27.50811],
+                    [52.78147, 27.50903],
+                    [52.782043, 27.511026],
+                    [52.782878, 27.510375],
+                    [52.783480, 27.510297],
+                    [52.784575, 27.510335],
+                    [52.786670, 27.510817],
+                    [52.786551, 27.520841],
+                    [52.787295, 27.523297],
+                    [52.786138, 27.524193],
+                    [52.789723, 27.535926],
+                    [52.784016, 27.540681],
+                    [52.786416, 27.548434],
+                    [52.786564, 27.548472],
+                    [52.786799, 27.548048],
+                    [52.792140, 27.543612],
+                    [52.792417, 27.543424],
+                    [52.792698, 27.543245],
+                ],
+                stops: [
+                    { name: "Улица Октябрьская", coords: [52.79139, 27.50122] },
+                    { name: "Улица Подольская", coords: [52.79061, 27.494] },
+                    { name: "Поликлинника", coords: [52.78672, 27.49544] },
+                    { name: "Улица Молодежная", coords: [52.78611, 27.50181] },
+                    { name: "Улица Заслонова", coords: [52.78131, 27.50306] },
+                    { name: "Бульвар шахтеров", coords: [52.785826, 27.510765] },
+                    { name: "Школа №10", coords: [52.786540, 27.513722] },
+                    { name: "Народный суд", coords: [52.786793, 27.521927] },
+                    { name: "Собор Рождества Христова", coords: [52.78761, 27.52922] },
+                    { name: "Улица Ленина", coords: [52.78906, 27.53633] },
+                    { name: "Юбилейная", coords: [52.78661, 27.53839] },
+                    { name: "Техникум", coords: [52.78558, 27.54614] },
+                    { name: "Магазин Шахтер", coords: [52.78939, 27.546] },
+                    { name: "Вокзал", coords: [52.79275, 27.54333] },
+
+                    { name: "Вокзал", coords: [52.792640, 27.542725] },
+                    { name: "Магазин шахтер", coords: [52.788837, 27.546122] },
+                    { name: "Техникум", coords: [52.785375, 27.544457] },
+                    { name: "Юбилейная", coords: [52.787235, 27.538371] },
+                    { name: "Тц Корона", coords: [52.789147, 27.533255] },
+                    { name: "Собор Рождества Христова", coords: [52.787356, 27.527456] },
+                    { name: "Народный суд", coords: [52.787016, 27.521691] },
+                    { name: "Школа №10", coords: [52.786835, 27.511864] },
+                    { name: "Бульвар шахтеров", coords: [52.786054, 27.510368] },
+                    { name: "Улица Заслонова", coords: [52.782102, 27.502199] },
+                    { name: "Улица Судиловского", coords: [52.786942, 27.501149] },
+                    { name: "Поликлинника", coords: [52.787509, 27.494388] },
+                    { name: "Улица Октябрьская", coords: [52.791044, 27.495230] },
+                ]
+            },
         ];
 
         let activeRouteLayer = null;
@@ -280,7 +414,8 @@ function createCustomIcon(color) {
         className: "custom-icon",
         html: `<div style="background: ${color}; width: 15px; height: 15px; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);"></div>`,
         iconSize: [15, 15],
-        iconAnchor: [7.5, 7.5]
+        iconAnchor: [7.5, 7.5],
+        popupAnchor: [-3, -38]
     });
 }
 
@@ -298,7 +433,8 @@ function createUserLocationIcon() {
 function showUserLocation() {
     // Проверяем, поддерживает ли браузер геолокацию
     if (navigator.geolocation) {
-        map.locate({ setView: true, maxZoom: 16 });
+        // Только находим местоположение, не меняя вид карты
+        map.locate({ maxZoom: 16 });
 
         // Обработчик успешного получения местоположения
         map.on('locationfound', function(e) {
@@ -327,6 +463,7 @@ function showUserLocation() {
 
 // Вызов функции для отображения местоположения
 showUserLocation();
+
 
 
         // Создаем кнопки маршрутов
