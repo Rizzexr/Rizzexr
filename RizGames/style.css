@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* Высота на весь экран */
+    overflow: hidden; /* Убираем прокрутку */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Современный шрифт */
+    text-align: center;
+    background: url(back.jpg); /* Градиентный фон */
+    background-size: cover;
+    color: #fff; /* Белый текст */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #ff6f00;
+    font-size: 6vh;
+    margin: 0 0 10px;
+    text-shadow: 0px 3px 10px rgba(255, 111, 0, 0.7); /* Добавляем свечение текста */
+}
+
+h2 {
+    color: #fff;
+    font-size: 4vh;
+    margin: 0 0 20px;
+    text-shadow: 0px 3px 10px rgba(255, 255, 255, 0.5); /* Лёгкое свечение */
+}
+
+.line {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; /* Расстояние между элементами */
+    margin-bottom: 20vh;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-size: 4vh;
+    padding: 10px 20px;
+    /* background: linear-gradient(135deg, #ff6f00, #ff9800); Градиент для кнопки */
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Тень под кнопкой */
+    transition: all 0.3s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+    /* background: linear-gradient(135deg, #ff9800, #ff6f00); Инверсия градиента при наведении */
+    transform: scale(1.1); /* Лёгкое увеличение */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Увеличение тени */
+}
+
+a:active {
+    transform: scale(1.05); /* Лёгкое уменьшение при нажатии */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7); /* Тень при нажатии */
+}
