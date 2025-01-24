@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="phone.css">
+    <title>Telegram Birthday</title>
+</head>
+<body>
+    <header>
+        <img src="icon.png" id="icon">
+        <h1><b>TELEGRAM BIRTHDAY</b></h1>
+    </header>
+    <main>
+        <input class="default-input" type="text" placeholder="Введите имя" id="name-input">
+        <input class="default-input" type="date" placeholder="Дата рождения" id="date-input">
+        <div class="line">
+            <div class="column">
+                <input type="radio" id="male" name="gender" value="male" class="gender">
+                <label for="male"><h2>Мужчина</h2></label>
+            </div>
+            <div class="column">
+                <input type="radio" id="female" name="gender" value="female" class="gender">
+                <label for="female"><h2>Женщина</h2></label>
+            </div>
+        </div>
+        <button onclick="generateLink()" id="button-send"><b>Сохранить</b></button>
+    </main>
+    <script>
+        function generateLink() {
+            // Получаем значения из полей ввода
+            const name = document.getElementById('name-input').value;
+            const date = document.getElementById('date-input').value;
+            const genderElement = document.querySelector('input[name="gender"]:checked');
+
+            // Проверяем, что все поля заполнены
+            if (!name || !date || !genderElement) {
+                alert("Пожалуйста, заполните все поля и выберите пол.");
+                return; // Прерываем выполнение функции, если данные не заполнены
+            }
+
+            const gender = genderElement.value;
+
+            // Форматируем дату в нужный формат (например, DD-MM-YYYY)
+            const formattedDate = date.split('-').reverse().join('-');
+
+            // Формируем ссылку
+            const link = `https://t.me/${name}/${formattedDate}/${gender}`;
+
+            // Открываем ссылку в новой вкладке
+            window.open(link, '_blank');
+        }
+    </script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+
+        window.Telegram.WebApp.setBackgroundColor("#a18cd1");
+
+        sBtn.addEventListener("click", () => {
+            tg.close();
+        });
+    </script>
+</body>
+</html>
