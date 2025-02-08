@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+<style>
+    h1{
+        color: #000;
+    }
+</style>
+
 </head>
 <body>
     <h1 id="username"></h1>
-    <h2 id="userId"></h2>
+    <h1 id="userId"></h1>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        let tg = window.Telegram.WebApp;
+<script>
+    let tg = window.Telegram.WebApp;
 
-        // Инициализация WebApp
-        tg.initData();
+    tg.expand();
 
-        // Получение данных пользователя
-        const user = tg.initDataUnsafe.user;
+    const username = tg.initDataUnsafe.user.first_name;
+    const userId = tg.initDataUnsafe.user.id;
 
-        // Проверка, есть ли данные о пользователе
-        if (user) {
-            // Установка имени пользователя в h1
-            document.getElementById('username').textContent = `Username: ${user.username || 'Unknown'}`;
-            // Установка Telegram ID в h2
-            document.getElementById('userId').textContent = `User ID: ${user.id}`;
-        }
-
-        // Разворачиваем приложение на весь экран
-        tg.expand();
-    </script>
+    if (username && userId) {
+        document.getElementById('username').textContent = `Username: ${username || 'Unknown'}`;
+        document.getElementById('userId').textContent = `User ID: ${userId}`;
+    }
+</script>
 </body>
 </html>
