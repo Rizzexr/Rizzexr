@@ -1,0 +1,103 @@
+html{
+    overflow: hidden;
+
+    height: 100vh;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    background: #F0EFF4;
+}
+body{ 
+    overflow: hidden;
+    
+    height: 100vh;
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+#colorPicker { 
+    /* width: 90%;
+    height: 40vh;
+
+    margin: 2vh;
+    padding: 0; */
+    margin: 20px auto; 
+}
+.buttons { margin-top: 10px; }
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background: #eee;
+    border-radius: 5px;
+}
+button:hover { background: #ddd; }
+#colorValue {
+    font-size: 18px;
+    /* margin-top: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    /* gap: 10px; */
+}
+#colorPreview {
+    width: 80%;
+    font-size: 18px;
+    border-radius: 3vh;
+    /* border: 0.4vh solid rgba(0, 0, 0, 0.4); */
+    background: #ED6BA4;
+    display: inline-block;
+    padding: 1vh;
+
+    margin-top: 3vh;
+}
+#colorInput {
+    border-radius: 3vh;
+    font-size: 18px;
+    padding: 1vh;
+    border: 2px solid #ccc;
+    text-align: center;
+    width: 80%;
+}
+#copyButton { 
+    background: linear-gradient(45deg, #8879FF, #C473CE, #ED6BA4, #FF6780, #F78063); 
+    box-shadow: 0vh 0vh 1vh rgba(0, 0, 0, 0.4);
+    color: white; 
+    width: 80%;
+    margin-top: 4vh;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3vh;
+    border: none;
+    transition: box-shadow 2s, transform 2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+#notification {
+    display: none;
+    position: fixed;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #8879FF, #C473CE, #ED6BA4, #FF6780, #F78063); 
+    color: white;
+    padding: 3vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 999;
+}

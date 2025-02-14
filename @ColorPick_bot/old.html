@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кастомный Color Picker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="colorPicker"></div>
+    
+    <div class="buttons">
+        <button onclick="setFormat('hex')">HEX</button>
+        <button onclick="setFormat('rgb')">RGB</button>
+        <button onclick="setFormat('hsl')">HSL</button>
+    </div>
+
+    <p id="colorValue">
+        <input id="colorInput" type="text" value="#ff0000">
+        <span id="colorPreview">.</span>
+        <button id="copyButton" onclick="copyColor()">Копировать</button>
+    </p>
+
+    <script>
+        let colorPicker = new iro.ColorPicker("#colorPicker", {
+            width: 280,
+            color: "#ED6BA4", // Красный по умолчанию
+            layout: [
+                { component: iro.ui.Box }, // Квадратное поле цвета
+                { component: iro.ui.Slider, options: { sliderType: 'hue' } }  // Ползунок оттенков
+            ]
+        });
+
+        let format = 'hex'; // Текущий формат цвета
+
+        // Обновление цвета в текстовом поле и кружке
+        colorPicker.on('color:change', function(color) {
+            let colorValue = getColorValue(color);
+            document.querySelector("#colorInput").value = colorValue;
+            document.querySelector("#colorPreview").style.background = colorValue;
+        });
+
+        // Обновление цвета при ручном вводе
+        document.querySelector("#colorInput").addEventListener("input", function() {
+            let inputColor = this.value;
+            try {
+                colorPicker.color.set(inputColor);
+            } catch (e) {} // Игнорируем ошибки, если цвет некорректный
+        });
+
+        // Функция для смены формата цвета
+        function setFormat(newFormat) {
+            format = newFormat;
+            let color = colorPicker.color;
+            document.querySelector("#colorInput").value = getColorValue(color);
+        }
+
+        // Получение цвета в нужном формате
+        function getColorValue(color) {
+            if (format === 'hex') return color.hexString;
+            if (format === 'rgb') return color.rgbString;
+            if (format === 'hsl') return color.hslString;
+        }
+
+        // Функция для копирования цвета
+function copyColor() {
+    let colorText = document.querySelector("#colorInput").value;
+    navigator.clipboard.writeText(colorText).catch(err => {
+        console.error('Ошибка при копировании: ', err);
+    });
+}
+
+    </script>
+
+</body>
+</html>
