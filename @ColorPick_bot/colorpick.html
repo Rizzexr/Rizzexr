@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кастомный Color Picker</title>
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -82,8 +83,9 @@
                 console.error('Ошибка при копировании: ', err);
             });
         }
-        const tg = window.Telegram.WebApp;
-        tg.setHeaderColor("#F0EFF4"); // Изменяет цвет шапки
+
+        const tg = Telegram.WebApp;
+        tg.setHeaderColor("#F0EFF4");
     </script>
 
 </body>
