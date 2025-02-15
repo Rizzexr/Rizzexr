@@ -19,7 +19,10 @@
     </div>
 
     <p id="colorValue">
-        <input id="colorInput" type="text" value="#ed6ba4">
+        <div class="line">
+            <input id="colorInput" type="text" value="#ed6ba4">
+            <button id="eyedropperButton" onclick="pickColor()">.<img src="icon.png" id="iconP">.</button>
+        </div>
         <span id="colorPreview">.</span>
         <button id="copyButton" onclick="copyColor()">Копировать</button>
     </p>
@@ -29,53 +32,45 @@
     <script>
         let colorPicker = new iro.ColorPicker("#colorPicker", {
             width: 280,
-            color: "#ED6BA4", // Красный по умолчанию
+            color: "#ED6BA4",
             layout: [
-                { component: iro.ui.Box }, // Квадратное поле цвета
-                { component: iro.ui.Slider, options: { sliderType: 'hue' } }  // Ползунок оттенков
+                { component: iro.ui.Box },
+                { component: iro.ui.Slider, options: { sliderType: 'hue' } }
             ]
         });
 
-        let format = 'hex'; // Текущий формат цвета
+        let format = 'hex';
 
-        // Обновление цвета в текстовом поле и кружке
         colorPicker.on('color:change', function(color) {
             let colorValue = getColorValue(color);
             document.querySelector("#colorInput").value = colorValue;
             document.querySelector("#colorPreview").style.background = colorValue;
         });
 
-        // Обновление цвета при ручном вводе
         document.querySelector("#colorInput").addEventListener("input", function() {
             let inputColor = this.value;
             try {
                 colorPicker.color.set(inputColor);
-            } catch (e) {} // Игнорируем ошибки, если цвет некорректный
+            } catch (e) {}
         });
 
-        // Функция для смены формата цвета
         function setFormat(newFormat) {
             format = newFormat;
             let color = colorPicker.color;
             document.querySelector("#colorInput").value = getColorValue(color);
         }
 
-        // Получение цвета в нужном формате
         function getColorValue(color) {
             if (format === 'hex') return color.hexString;
             if (format === 'rgb') return color.rgbString;
             if (format === 'hsl') return color.hslString;
         }
 
-        // Функция для копирования цвета
         function copyColor() {
             let colorText = document.querySelector("#colorInput").value;
             navigator.clipboard.writeText(colorText).then(() => {
-                // Показываем уведомление
                 let notification = document.querySelector("#notification");
                 notification.style.display = "block";
-
-                // Скрываем уведомление через 2 секунды
                 setTimeout(() => {
                     notification.style.display = "none";
                 }, 1000);
@@ -84,9 +79,23 @@
             });
         }
 
+        function pickColor() {
+            if (!window.EyeDropper) {
+                alert("Ваш браузер не поддерживает инструмент пипетки.");
+                return;
+            }
+            const eyeDropper = new EyeDropper();
+            eyeDropper.open().then(result => {
+                document.querySelector("#colorInput").value = result.sRGBHex;
+                colorPicker.color.set(result.sRGBHex);
+            }).catch(err => {
+                console.error('Ошибка пипетки: ', err);
+            });
+        }
+
         const tg = Telegram.WebApp;
         tg.setHeaderColor("#F0EFF4");
-        tg.setBackgroundColor("#F0EFF4"); // Цвет, как у заголовка
+        tg.setBackgroundColor("#F0EFF4");
 
     </script>
 

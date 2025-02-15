@@ -47,6 +47,7 @@ button {
     font-size: 16px;
     background: #eee;
     border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
 }
 button:hover { background: #ddd; }
 #colorValue {
@@ -83,7 +84,8 @@ button:hover { background: #ddd; }
     background: linear-gradient(45deg, #8879FF, #C473CE, #ED6BA4, #FF6780, #F78063); 
     box-shadow: 0vh 0vh 1vh rgba(0, 0, 0, 0.4);
     color: white; 
-    width: 80%;
+    width: 85%;
+    height: 8vh;
     margin-top: 4vh;
     font-size: 18px;
     font-weight: bold;
@@ -91,6 +93,8 @@ button:hover { background: #ddd; }
     border: none;
     transition: box-shadow 2s, transform 2s ease;
     -webkit-tap-highlight-color: transparent;
+    padding: 1vh;
+    margin-right: 1vh;
 }
 #notification {
     display: none;
@@ -105,4 +109,30 @@ button:hover { background: #ddd; }
     font-size: 18px;
     font-weight: bold;
     z-index: 999;
+}
+.line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+}
+#eyedropperButton{
+    width: 30%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3vh;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    height: 5vh;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1vh;
+}
+#iconP{
+    width: 30%;
+    margin: 0;
+    padding: 0;
 }
