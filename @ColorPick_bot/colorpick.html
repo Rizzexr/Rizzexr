@@ -28,6 +28,7 @@
     </p>
 
     <div id="notification">Скопировано</div>
+    <div id="notificationT">Пипетка недоступна на вашем устройстве</div>
 
     <script>
         let colorPicker = new iro.ColorPicker("#colorPicker", {
@@ -81,8 +82,11 @@
 
         function pickColor() {
             if (!window.EyeDropper) {
-                alert("Ваш браузер не поддерживает инструмент пипетки.");
-                return;
+                let notification = document.querySelector("#notificationT");
+                notification.style.display = "block";
+                setTimeout(() => {
+                    notification.style.display = "none";
+                }, 3000);
             }
             const eyeDropper = new EyeDropper();
             eyeDropper.open().then(result => {

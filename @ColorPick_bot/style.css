@@ -112,6 +112,20 @@ button:hover { background: #ddd; }
     font-weight: bold;
     z-index: 999;
 }
+#notificationT {
+    display: none;
+    position: fixed;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #8879FF, #C473CE, #ED6BA4, #FF6780, #F78063); 
+    color: white;
+    padding: 3vh;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 998;
+}
 .line{
     display: flex;
     justify-content: center;
