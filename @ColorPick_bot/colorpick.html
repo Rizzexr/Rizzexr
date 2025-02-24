@@ -22,9 +22,9 @@
     <p id="colorValue">
         <div class="line">
             <input id="colorInput" type="text" value="#ed6ba4">
-            <button id="eyedropperButton" onclick="pickColor()">.<img src="icon.png" id="iconP">.</button>
+            <button id="eyedropperButton" onclick="pickColor()"><img src="icon.png" id="iconP"></button>
         </div>
-        <span id="colorPreview">.</span>
+        <span id="colorPreview"></span>
         <button id="copyButton" onclick="copyColor()">Copy</button>
     </p>
 
@@ -38,7 +38,8 @@
             layout: [
                 { component: iro.ui.Box },
                 { component: iro.ui.Slider, options: { sliderType: 'hue' } },
-                { component: iro.ui.Slider, options: { sliderType: 'value' } }
+                { component: iro.ui.Slider, options: { sliderType: 'value' } },
+                { component: iro.ui.Slider, options: { sliderType: 'saturation' } }
             ]
         });
 

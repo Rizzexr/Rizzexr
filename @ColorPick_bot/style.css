@@ -38,7 +38,7 @@ body{
     padding: 0; */
     margin: 20px auto; 
 }
-.buttons { margin-top: 10px; }
+/* .buttons { margin-top: 10px; } */
 button {
     padding: 8px 12px;
     margin: 5px;
@@ -64,6 +64,7 @@ button:hover { background: #ddd; }
 }
 #colorPreview {
     width: 80%;
+    height: 2.5vh;
     font-size: 18px;
     border-radius: 3vh;
     /* border: 0.4vh solid rgba(0, 0, 0, 0.4); */
