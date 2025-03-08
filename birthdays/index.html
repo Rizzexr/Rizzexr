@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="block">
+            <h1>cake</h1>
+            <h1>alarm</h1>
+        </div>
+        <img src="images/logo.png" id="cake">
+    </header>
+    <main>
+        <div class="input-group">
+            <input type="text" id="input-name" class="input-field" placeholder="Введите имя">
+        </div>
+        <div class="input-group">
+            <div class="date-selectors">
+                <select id="select-month" class="month-select">
+                    <option value="" disabled selected>Месяц</option>
+                    <option value="01">Январь</option>
+                    <option value="02">Февраль</option>
+                    <option value="03">Март</option>
+                    <option value="04">Апрель</option>
+                    <option value="05">Май</option>
+                    <option value="06">Июнь</option>
+                    <option value="07">Июль</option>
+                    <option value="08">Август</option>
+                    <option value="09">Сентябрь</option>
+                    <option value="10">Октябрь</option>
+                    <option value="11">Ноябрь</option>
+                    <option value="12">Декабрь</option>
+                </select>
+                <select id="select-day" class="day-select">
+                    <option value="" disabled selected>День</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+            </div>
+        </div>
+        <button id="add-button" class="telegram-button">Добавить</button>
+    </main>
+    <script>
+        const daySelect = document.getElementById('select-day');
+        const monthSelect = document.getElementById('select-month');
+
+        monthSelect.addEventListener('change', function() {
+            const month = monthSelect.value;
+            let maxDays = 31;
+
+            if (month === '02') maxDays = 28;
+            else if (['04', '06', '09', '11'].includes(month)) maxDays = 30;
+
+            while (daySelect.options.length > 1) {
+                daySelect.remove(1);
+            }
+
+            for (let i = 1; i <= maxDays; i++) {
+                const option = document.createElement('option');
+                option.value = i < 10 ? `0${i}` : `${i}`;
+                option.text = i;
+                daySelect.appendChild(option);
+            }
+        });
+    </script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        
+        let addButton = document.getElementById("add-button");
+
+        addButton.addEventListener("click", () => {
+            const name = document.getElementById("input-name").value;
+            const month = document.getElementById("select-month").value;
+            const day = document.getElementById("select-day").value;
+
+            const data = {
+                name: name,
+                month: month,
+                day: day,
+                chapter: 'add-birthday'
+            };
+
+            tg.sendData(JSON.stringify(data));
+            
+            tg.close();
+        });
+
+        tg.ready();
+    </script>
+</body>
+</html>
