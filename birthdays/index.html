@@ -20,6 +20,9 @@
             <input type="text" id="input-name" class="input-field" placeholder="Введите имя">
         </div>
         <div class="input-group">
+            <input type="text" id="input-callsign" class="input-field" placeholder="Введите позывной (Шпала)">
+        </div>
+        <div class="input-group">
             <div class="date-selectors">
                 <select id="select-month" class="month-select">
                     <option value="" disabled selected>Месяц</option>
@@ -72,6 +75,15 @@
                 </select>
             </div>
         </div>
+        <div class="input-group">
+            <div class="date-selectors">
+                <select id="select-gender" class="gender-select">
+                    <option value="" disabled selected>Пол</option>
+                    <option value="female">Женщина</option>
+                    <option value="male">Мужчина</option>
+                </select>
+            </div>
+        </div>
         <button id="add-button" class="telegram-button">Добавить</button>
     </main>
     <script>
@@ -104,13 +116,17 @@
 
         addButton.addEventListener("click", () => {
             const name = document.getElementById("input-name").value;
+            const callsign = document.getElementById("input-callsign").value;
             const month = document.getElementById("select-month").value;
             const day = document.getElementById("select-day").value;
+            const gender = document.getElementById("select-gender").value;
 
             const data = {
                 name: name,
+                callsign: callsign,
                 month: month,
                 day: day,
+                gender: gender,
                 chapter: 'add-birthday'
             };
 
