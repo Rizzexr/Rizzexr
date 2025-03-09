@@ -120,7 +120,15 @@
             const month = document.getElementById("select-month").value;
             const day = document.getElementById("select-day").value;
             const gender = document.getElementById("select-gender").value;
-            const timezoneString = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const date = new Date();
+            const offset = date.getTimezoneOffset();  // смещение от UTC в минутах
+            const sign = offset > 0 ? "-" : "+";  // Определяем знак
+            const hours = Math.floor(Math.abs(offset) / 60);
+            const minutes = Math.abs(offset) % 60;
+            const timezone = `GMT${sign}${hours}:${minutes.toString().padStart(2, "0")}`;
+
+            // console.log(formattedOffset);
+
 
 
             const data = {
