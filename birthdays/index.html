@@ -120,6 +120,8 @@
             const month = document.getElementById("select-month").value;
             const day = document.getElementById("select-day").value;
             const gender = document.getElementById("select-gender").value;
+            const timezoneString = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 
             const data = {
                 name: name,
@@ -127,6 +129,7 @@
                 month: month,
                 day: day,
                 gender: gender,
+                timezone: timezoneString,
                 chapter: 'add-birthday'
             };
 
