@@ -76,3 +76,24 @@ body {
 .popup-content {
     padding: 10px;
 }
+
+
+
+
+
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ff4444;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    z-index: 1000; /* Поверх всех слоев */
+
+    border-top-left-radius: 5vh;
+    border-top-right-radius: 5vh;
+}
