@@ -189,6 +189,7 @@ body {
     border-radius: 50%;
     border: none;
     transition: background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .close-btnriz:hover {
