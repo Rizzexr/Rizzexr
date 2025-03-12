@@ -20,5 +20,12 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        window.onload = function () {
+            Telegram.WebApp.expand(); // Разворачивает WebApp
+            Telegram.WebApp.setHeaderColor("#FF5733"); // Меняет цвет верхней панели
+        };
+    </script>
 </body>
 </html>
