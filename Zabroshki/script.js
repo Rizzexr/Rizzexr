@@ -2,12 +2,18 @@ let map = L.map('map', {
     zoomControl: false
 }).setView([46.416891, 30.758571], 13);
 
-// Используем CartoDB.DarkMatter для темной минималистичной карты
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+// Слой для темной карты (по умолчанию)
+let darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 20
 }).addTo(map);
+
+// Слой для спутниковой карты
+let satelliteLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 20
+});
 
 // Список точек с новыми полями
 const points = [
@@ -211,3 +217,21 @@ function getMyLocation() {
         alert('Геолокация не поддерживается вашим устройством.');
     }
 }
+
+// Переключение режимов карты
+const darkModeBtn = document.getElementById('darkModeBtn');
+const satelliteModeBtn = document.getElementById('satelliteModeBtn');
+
+darkModeBtn.addEventListener('click', () => {
+    map.removeLayer(satelliteLayer);
+    map.addLayer(darkLayer);
+    darkModeBtn.classList.add('active');
+    satelliteModeBtn.classList.remove('active');
+});
+
+satelliteModeBtn.addEventListener('click', () => {
+    map.removeLayer(darkLayer);
+    map.addLayer(satelliteLayer);
+    satelliteModeBtn.classList.add('active');
+    darkModeBtn.classList.remove('active');
+});

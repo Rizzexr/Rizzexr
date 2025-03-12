@@ -39,7 +39,6 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
-
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -77,11 +76,6 @@ body {
     padding: 10px;
 }
 
-
-
-
-
-
 .fixed-bottom {
     position: fixed;
     bottom: 0;
@@ -90,10 +84,35 @@ body {
     background-color: #ff4444;
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     z-index: 1000; /* Поверх всех слоев */
-
     border-top-left-radius: 5vh;
     border-top-right-radius: 5vh;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mode-btn.active {
+    background: #ffffff;
+    color: #ff4444;
+    font-weight: bold;
 }
