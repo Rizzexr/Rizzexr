@@ -116,3 +116,90 @@ body {
     color: #ff4444;
     font-weight: bold;
 }
+
+
+
+
+
+
+
+
+/* Оверлей (фон) */
+.overlayriz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1010;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    color: #fff;
+}
+
+.modalriz {
+    background: #262626;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.modalriz p {
+    text-align: left;
+    max-width: 260px;
+    margin: 15px auto;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.modalriz p strong {
+    color: #ffffff;
+    font-weight: 600;
+    background: rgba(255, 68, 68, 0.2);
+    /* padding: 4px 6px; */
+    border-radius: 4px;
+    display: inline-block;
+    padding: 1vh;
+    border-radius: 1vh;
+}
+
+.close-btnriz {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    background: #ff4444;
+    color: white;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    transition: background 0.2s ease;
+}
+
+.close-btnriz:hover {
+    background: #cc0000;
+}
+
+.overlayriz.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlayriz.active .modalriz {
+    transform: scale(1);
+}

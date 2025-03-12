@@ -18,6 +18,18 @@
         <button id="satelliteModeBtn" class="mode-btn">Стандарт</button>
     </div>
 
+
+    <!-- Оверлей + модальное окно -->
+    <div class="overlayriz" id="overlayriz">
+        <div class="modalriz">
+            <button class="close-btnriz" id="closeBtnriz">✖</button>
+            <!-- <h2>Привет!</h2> -->
+            <p>Здесь собраны заброшенные места, которые можно посетить. Опасные объекты, такие как шахты и другие рискованные зоны, не отображаются</p>
+            <p><strong>❗️⛔️ Пожалуйста, заботьтесь о своей безопасности, уважайте окружающую среду и не оставляйте мусор. Также воздержитесь от любых актов вандализма! ❗️🚯</strong></p>
+        </div>
+    </div>
+
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -26,6 +38,17 @@
             Telegram.WebApp.expand(); // Разворачивает WebApp
             Telegram.WebApp.setHeaderColor("#ff4444"); // Меняет цвет верхней панели
         };
+    </script>
+    <script>
+        // Открытие окна (по умолчанию)
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("overlayriz").classList.add("active");
+        });
+
+        // Закрытие окна
+        document.getElementById("closeBtnriz").addEventListener("click", function () {
+            document.getElementById("overlayriz").classList.remove("active");
+        });
     </script>
 </body>
 </html>
