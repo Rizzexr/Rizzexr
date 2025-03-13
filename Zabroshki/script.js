@@ -292,7 +292,7 @@ const points = [
         lon: 30.756111, 
         label: "Бывшая лаборатория физики алмазов", 
         color: "#FF4444", 
-        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/11.png",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top11.png",
         guarded: "Неизвестно",
         difficulty: "3/3"
     },
