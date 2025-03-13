@@ -204,3 +204,17 @@ body {
 .overlayriz.active .modalriz {
     transform: scale(1);
 }
+
+
+
+
+#channel{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    background: #ff4444;
+    padding: 1vh;
+    border-radius: 1vh;
+    -webkit-tap-highlight-color: transparent;
+}

@@ -22,7 +22,7 @@ const points = [
         lon: 30.758571, 
         label: "Санаторий - Красные Зори", 
         color: "#00FF09", 
-        image: "https://odessa-life.od.ua/wp-content/uploads/2019/12/Odin-iz-korpusov-sanatorija-3.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/1.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -31,7 +31,7 @@ const points = [
         lon: 30.719805, 
         label: "411 бункер (1)", 
         color: "#FFE500", 
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4bYKmvtceNS7MMk0_T9JCn5Fqj8qazWXy5w&s",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/2.jpeg",
         guarded: "Нет",
         difficulty: "2/3"
     },
@@ -40,7 +40,7 @@ const points = [
         lon: 30.719140, 
         label: "411 бункер (2)", 
         color: "#FFE500", 
-        image: "https://dumskaya.net/pics1/a0-1444251504.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/3.jpg",
         guarded: "Нет",
         difficulty: "2/3"
     },
@@ -49,7 +49,7 @@ const points = [
         lon: 30.718619, 
         label: "411 бункер (3)", 
         color: "#FFE500", 
-        image: "https://www.vladmuz.ru/travel_photos/odessa/411-battery/50.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/4.jpg",
         guarded: "Нет",
         difficulty: "2/3"
     },
@@ -58,7 +58,7 @@ const points = [
         lon: 30.7031552, 
         label: "Дом культуры Черноморки им. Карла Либкнехта", 
         color: "#00FF09", 
-        image: "https://odessa.online/wp-content/uploads/2021/05/photo_2021-05-17_10-07-06-5-1024x683.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/5.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -67,7 +67,7 @@ const points = [
         lon: 30.746031, 
         label: "Санаторий", 
         color: "#FFE500", 
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMSzG4EPVAS5G6xaMtN2eV_ibAfupqa8INAA&s",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top1.png",
         guarded: "Нет",
         difficulty: "2/3"
     },
@@ -76,7 +76,7 @@ const points = [
         lon: 30.749763, 
         label: "Санаторий - Чёрное море", 
         color: "#00FF09", 
-        image: "https://odessamedia.net/images/2020/01/22/fotorep/glav.apaqi.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/6.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -85,7 +85,7 @@ const points = [
         lon: 30.7171527, 
         label: "Большой паровозный цех", 
         color: "#00FF09", 
-        image: "https://lh6.googleusercontent.com/42cTp30Av0bYEtb1Z2MPWEyKUL86DsQ6Ne6Of0EuJlt9g4d0uGftw2SLGKyATxE0yfxAUQawym69mhqCh_bVVm1taHVK7PE2d1AcK4SM5Deqv9sS-KVBNcgbLTgiqoy8kk3V0p8Y",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/7.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -94,7 +94,7 @@ const points = [
         lon: 30.767106, 
         label: "Аранжерея Маразли", 
         color: "#00FF09", 
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHtVjZ3fwwJpze8UrMHsZyAEC6P7KkaepPY-na-kxZuZiYrw_r0Ce5j19OQUDVIcpB7Fw&usqp=CAU",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/8.jpeg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -103,7 +103,7 @@ const points = [
         lon: 30.767850, 
         label: "Корпус", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top2.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -112,7 +112,7 @@ const points = [
         lon: 30.727563, 
         label: "Санаторий - Куяльник", 
         color: "#ff4444", 
-        image: "https://odessa.online/wp-content/uploads/2023/08/910673_original.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/9.jpg",
         guarded: "Нет",
         difficulty: "3/3"
     },
@@ -121,7 +121,7 @@ const points = [
         lon: 30.298141, 
         label: "Усадьба Дубецких", 
         color: "#00FF09", 
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/%D0%9F%D0%B0%D0%BB%D0%B0%D1%86-%D0%A1%D0%B0%D0%B4%D0%B8%D0%B1%D0%B0_%D0%94%D1%83%D0%B1%D0%B5%D1%86%D1%8C%D0%BA%D0%B8%D1%85_01.jpg/640px-%D0%9F%D0%B0%D0%BB%D0%B0%D1%86-%D0%A1%D0%B0%D0%B4%D0%B8%D0%B1%D0%B0_%D0%94%D1%83%D0%B1%D0%B5%D1%86%D1%8C%D0%BA%D0%B8%D1%85_01.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/10.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -130,7 +130,7 @@ const points = [
         lon: 30.7398112, 
         label: "Доходный дом Лерхе", 
         color: "#ff4444", 
-        image: "https://zabytki.in.ua/images/3911.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/11.jpg",
         guarded: "Да",
         difficulty: "3/3"
     },
@@ -139,7 +139,7 @@ const points = [
         lon: 30.7230242, 
         label: "Швейка", 
         color: "#00FF09", 
-        image: "https://usionline.com/wp-content/uploads/2019/05/E9DA74EB-5C2F-46D3-BACD-70BFEDD6CE97-1510x848.jpeg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/12.jpeg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -148,7 +148,7 @@ const points = [
         lon: 30.670442, 
         label: "Недействующий резервуар", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top3.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -157,7 +157,7 @@ const points = [
         lon: 30.729827, 
         label: "Недостройка", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top4.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -166,7 +166,7 @@ const points = [
         lon: 30.729970, 
         label: "Дом Писателей", 
         color: "#FF4444", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top5.png",
         guarded: "Неизвестно",
         difficulty: "3/3"
     },
@@ -175,7 +175,7 @@ const points = [
         lon: 30.742883, 
         label: "Заброшенная столовая", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top6.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -184,7 +184,7 @@ const points = [
         lon: 30.762995419371922, 
         label: "Заброшенный корпус", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top7.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -193,7 +193,7 @@ const points = [
         lon: 30.6975442, 
         label: "Заброшенные подземные склады (вход)", 
         color: "#FFE500", 
-        image: "https://media-hosting.imagekit.io//44d6943df5ec4632/Screenshot_328.png?Expires=1836407957&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dBIfU4cT7GUtfC~aUu4OZ5xwlfuanrB-lJNkiS5whfcpOjGHXC7zid0dUlYOESZd99xD8N~533j1o7-m16YeikhR1FFh3okfQOR8QZp5BaHEeeVhjctL5mgKuL-zw8d6iJPCooH2qNC7mQLs3lUw4FRvfciwI1gM-X4J4vMvHUSjLt8tNK32e2HFOhHWDYc1kzT0DHczG4NyQcuhJEduDip9h-KF-l9alUjYYqpk18EF5~Tpk8n4k7wX8gIy6Vlnazey1S3rVm5-p0sqrWKJaJ3WVQOwxj6L~Xl450tNDTFOLzauh5RJ-COq2DwV7kIRrqRAZk9RGVD9RrjXHXVpOg__",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/13.png",
         guarded: "Нет",
         difficulty: "2/3"
     },
@@ -202,16 +202,16 @@ const points = [
         lon: 30.7676927, 
         label: "Корпус санатория", 
         color: "#00FF09", 
-        image: "http://photos.wikimapia.org/p/00/05/27/34/38_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/14.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
     { 
-        lat: 46.4703775, 
-        lon: 30.713943, 
+        lat: 46.46671611216549,  
+        lon: 30.741300400244324, 
         label: "Заброшенный подземный переход", 
         color: "#FF4444", 
-        image: "http://photos.wikimapia.org/p/00/07/32/78/08_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/15.jpg",
         guarded: "Нет",
         difficulty: "3/3"
     },
@@ -220,7 +220,7 @@ const points = [
         lon: 30.7298685, 
         label: "Судоремонтный завод в Одессе", 
         color: "#FF4444", 
-        image: "http://photos.wikimapia.org/p/00/02/53/37/46_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/16.jpg",
         guarded: "Неизвестно",
         difficulty: "3/3"
     },
@@ -229,7 +229,7 @@ const points = [
         lon: 30.7272265, 
         label: "Заброшенная часть грязелечебницы", 
         color: "#00FF09", 
-        image: "https://media-hosting.imagekit.io//32654f855ae64280/Screenshot_330.png?Expires=1836415277&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=zkxGn39bv716z3gIv1KHWLye0YJmL4i3OLnqNJexECAVM4WUYhSJbdIgOcAOabsDuul2IsIzHO~EBQAYO9Zbyz~4atOO5tE8cfhE23qmsnAtFHT0OZ26qd8OewuaOAL2Jx5tSNLu4qmfTrh~UdJwBsA4bfeFru8QgcXt5IKNbV8hNYQkjgMJcSZ2AS-2eDyb0s3T1GnkAjFx9HGoFYEDUJ1jFGp3F634BVx7YlXLTAnElsEyPRrMz9~8Lw4wemI-VvT3biFqRR-W7XrBOwJu~6GLjz3ZUTLAe2fGR4C4mLy4kVXBkgV2SRuQZhqILAHcpnL2EG46PlNdk3vz4hoUVw__",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/17.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -238,7 +238,7 @@ const points = [
         lon: 30.716944, 
         label: "Клуб завода Большевик", 
         color: "#00FF09", 
-        image: "http://photos.wikimapia.org/p/00/07/94/01/19_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/18.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -247,7 +247,7 @@ const points = [
         lon: 30.728901358155287, 
         label: "Заброшенный кирпичный завод", 
         color: "#00FF09", 
-        image: "http://photos.wikimapia.org/p/00/05/27/27/75_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/19.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -256,7 +256,7 @@ const points = [
         lon: 30.617096549451492, 
         label: "Заброшка", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top8.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
@@ -265,7 +265,7 @@ const points = [
         lon: 30.639722, 
         label: "Бывший завод", 
         color: "#FFE500", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top9.png",
         guarded: "Неизвестно",
         difficulty: "2/3"
     },
@@ -274,7 +274,7 @@ const points = [
         lon: 30.737778, 
         label: "ул. Европейская", 
         color: "#FF4444", 
-        image: "http://photos.wikimapia.org/p/00/05/27/34/85_1280.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/20.jpg",
         guarded: "Нет",
         difficulty: "3/3"
     },
@@ -283,7 +283,7 @@ const points = [
         lon: 30.768019, 
         label: "Заброшка на берегу", 
         color: "#FFE500", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top10.png",
         guarded: "Вроде старый дед",
         difficulty: "2/3"
     },
@@ -292,7 +292,7 @@ const points = [
         lon: 30.756111, 
         label: "Бывшая лаборатория физики алмазов", 
         color: "#FF4444", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/11.png",
         guarded: "Неизвестно",
         difficulty: "3/3"
     },
@@ -301,7 +301,7 @@ const points = [
         lon: 30.713889, 
         label: "Руины на большой площади (СМУ-12)", 
         color: "#00FF09", 
-        image: "https://nic-pnb.ru/wp-content/uploads/2014/09/no-foto-2.jpg",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top12.png",
         guarded: "Нет",
         difficulty: "1/3"
     },
