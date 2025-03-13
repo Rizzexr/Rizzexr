@@ -305,6 +305,105 @@ const points = [
         guarded: "Нет",
         difficulty: "1/3"
     },
+    { 
+        lat: 46.430618, 
+        lon: 30.596864, 
+        label: "Заброшенная ферма", 
+        color: "#00FF09", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top13.png",
+        guarded: "Нет",
+        difficulty: "1/3"
+    },
+    { 
+        lat: 46.831168, 
+        lon: 30.755619, 
+        label: "Бомбоубежище", 
+        color: "#00FF09", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top14.png",
+        guarded: "Нет",
+        difficulty: "1/3"
+    },
+    { 
+        lat: 46.892639, 
+        lon: 30.701467, 
+        label: "Заброшенная взлетно посадочная полоса", 
+        color: "#00FF09", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top15.png",
+        guarded: "Нет",
+        difficulty: "1/3"
+    },
+    { 
+        lat: 47.002883, 
+        lon: 30.754054, 
+        label: "Перевалочный элеватор", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top16.png",
+        guarded: "Нет",
+        difficulty: "2/3"
+    },
+    { 
+        lat: 46.999278, 
+        lon: 30.620655, 
+        label: "Старые катакомбы", 
+        color: "#f3f3f3", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top17.png",
+        guarded: "Нет",
+        difficulty: "Опасно"    
+    },
+    { 
+        lat: 46.705579, 
+        lon: 30.591288, 
+        label: "Катакомбы", 
+        color: "#f3f3f3", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top18.png",
+        guarded: "Нет",
+        difficulty: "Опасно"
+    },
+    { 
+        lat: 46.694856, 
+        lon: 30.391724, 
+        label: "Катакомбы", 
+        color: "#f3f3f3", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top19.png",
+        guarded: "Нет",
+        difficulty: "Опасно"
+    },
+    { 
+        lat: 46.587565, 
+        lon: 30.603681, 
+        label: "Катакомбы", 
+        color: "#f3f3f3", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top20.png",
+        guarded: "Нет",
+        difficulty: "Опасно"
+    },
+    { 
+        lat: 46.546041, 
+        lon: 30.731098, 
+        label: "Катакомбы вход №9", 
+        color: "#f3f3f3", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top21.png",
+        guarded: "Нет",
+        difficulty: "Опасно"
+    },
+    { 
+        lat: 46.47838879141698,  
+        lon: 30.762923512548507, 
+        label: "Вход в дренажно-штольневую систему + бункер", 
+        color: "#ffa600", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top22.png",
+        guarded: "Нет",
+        difficulty: "2/3"
+    },
+    { 
+        lat: 46.39055749235335,   
+        lon: 30.713084905871142, 
+        label: "Заброшка", 
+        color: "#ff4444", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top23.png",
+        guarded: "Неизвестно",
+        difficulty: "3/3"
+    },
     // { 
     //     lat: , 
     //     lon: , 
