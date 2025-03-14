@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Лоадер с логотипом и горизонтальной линией -->
+    <div class="loader-overlay" id="loader">
+        <img src="logo.png" alt="Logo" class="loader-logo">
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+
     <div class="container">
         <button class="where-am-i" onclick="getMyLocation()">Где я?</button>
         <div id="map"></div>
@@ -18,41 +27,55 @@
         <button id="satelliteModeBtn" class="mode-btn">Стандарт</button>
     </div>
 
-
-    <!-- Оверлей + модальное окно -->
     <div class="overlayriz" id="overlayriz">
         <div class="modalriz">
             <button class="close-btnriz" id="closeBtnriz">✖</button>
-            <!-- <h2>Привет!</h2> -->
             <p>Здесь собраны заброшенные места, которые можно посетить. Опасные объекты, такие как шахты, катакомбы и другие рискованные зоны, не отображаются</p>
             <p><strong>❗️⛔️ Пожалуйста, заботьтесь о своей безопасности, уважайте окружающую среду и не оставляйте мусор. Также воздержитесь от любых актов вандализма! ❗️🚯</strong></p>
-            <!-- <a href="https://t.me/Rizzexr" id="channel">канал разработчика</a> -->
-            <!-- <p>Сей Mini app создан из-за скуки</p> -->
-            <!-- <h2>Канал разработчика</h2> -->
             <a href="https://t.me/Rizzexr" id="channel">канал разработчика</a>
         </div>
     </div>
-
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        // Управление Telegram WebApp
         window.onload = function () {
-            Telegram.WebApp.expand(); // Разворачивает WebApp
-            Telegram.WebApp.setHeaderColor("#ff4444"); // Меняет цвет верхней панели
+            Telegram.WebApp.expand();
+            Telegram.WebApp.setHeaderColor("#ff4444");
         };
-    </script>
-    <script>
-        // Открытие окна (по умолчанию)
+
+        // Управление лоадером
         document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("overlayriz").classList.add("active");
+            const progressBar = document.getElementById("progressBar");
+            const progressText = document.getElementById("progressText");
+            const loader = document.getElementById("loader");
+
+            // Начинаем анимацию
+            progressBar.style.width = "100%";
+
+            // Обновляем проценты
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 1;
+                progressText.textContent = `${progress}%`;
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 40); // 4000ms / 100 = 40ms на каждый процент
+
+            // Скрываем лоадер через 4 секунды
+            setTimeout(() => {
+                loader.classList.add("hidden");
+                document.getElementById("overlayriz").classList.add("active");
+            }, 3000);
         });
 
-        // Закрытие окна
+        // Закрытие информационного окна
         document.getElementById("closeBtnriz").addEventListener("click", function () {
             document.getElementById("overlayriz").classList.remove("active");
-            let audio = new Audio('welcome2.mp3');
+            let audio = new Audio('RING_LOW.mp3');
             audio.play();
         });
     </script>

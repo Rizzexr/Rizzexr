@@ -218,3 +218,63 @@ body {
     border-radius: 1vh;
     -webkit-tap-highlight-color: transparent;
 }
+
+
+
+
+
+
+
+/* Стили для лоадера */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #262626;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.loader-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-container {
+    width: 50%;
+    height: 20px;
+    background: #090909;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px; /* Отступ от логотипа */
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #ff4444;
+    transition: width 3s linear;
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.loader-logo {
+    width: 150px; /* Задайте нужный размер */
+    height: auto;
+    margin-bottom: 20px; /* Отступ от прогресс-бара */
+}
