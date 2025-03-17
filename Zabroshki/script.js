@@ -404,6 +404,42 @@ const points = [
         guarded: "Неизвестно",
         difficulty: "3/3"
     },
+    { 
+        lat: 46.464387,   
+        lon: 30.322346, 
+        label: "Недостроенная Атомная Электростанция", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top24.png",
+        guarded: "Неизвестно",
+        difficulty: "2/3"
+    },
+    { 
+        lat: 46.432226, 
+        lon: 30.700139, 
+        label: "Заброшенный детский садик", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top25.png",
+        guarded: "Да",
+        difficulty: "2/3"
+    },
+    { 
+        lat: 46.448284, 
+        lon: 30.734947, 
+        label: "Заброшенный завод", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top26.png",
+        guarded: "Неизвестно",
+        difficulty: "2/3"
+    },
+    { 
+        lat: 46.4743614, 
+        lon: 30.7555022, 
+        label: "Дача Маразли", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/21.jpeg",
+        guarded: "Нет",
+        difficulty: "2/3"
+    },
     // { 
     //     lat: , 
     //     lon: , 
