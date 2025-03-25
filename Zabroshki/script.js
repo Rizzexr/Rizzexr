@@ -449,6 +449,24 @@ const points = [
         guarded: "Нет",
         difficulty: "1/3"
     },
+    { 
+        lat: 46.435076, 
+        lon: 30.741687, 
+        label: "Заброшенный санаторий", 
+        color: "#00FF09", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/23.png",
+        guarded: "Нет",
+        difficulty: "1/3"
+    },
+    { 
+        lat: 46.440023, 
+        lon: 30.758849, 
+        label: "Башня разрушенной дачи Бродського", 
+        color: "#FFE500", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/24.jpg",
+        guarded: "Нет",
+        difficulty: "2/3"
+    },
     // { 
     //     lat: , 
     //     lon: , 
