@@ -103,7 +103,7 @@ const points = [
         lon: 30.767850, 
         label: "Корпус", 
         color: "#00FF09", 
-        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top2.png",
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/25.jpg",
         guarded: "Нет",
         difficulty: "1/3"
     },
