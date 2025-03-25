@@ -422,15 +422,15 @@ const points = [
         guarded: "Да",
         difficulty: "2/3"
     },
-    { 
-        lat: 46.448284, 
-        lon: 30.734947, 
-        label: "Заброшенный завод", 
-        color: "#FFE500", 
-        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top26.png",
-        guarded: "Неизвестно",
-        difficulty: "2/3"
-    },
+    // { 
+    //     lat: 46.448284, 
+    //     lon: 30.734947, 
+    //     label: "Заброшенный завод", 
+    //     color: "#FFE500", 
+    //     image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/top26.png",
+    //     guarded: "Неизвестно",
+    //     difficulty: "2/3"
+    // },
     { 
         lat: 46.4743614, 
         lon: 30.7555022, 
@@ -439,6 +439,15 @@ const points = [
         image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/21.jpeg",
         guarded: "Нет",
         difficulty: "2/3"
+    },
+    { 
+        lat: 46.436111, 
+        lon: 30.731667, 
+        label: "Заброшенный летний кинотеатр", 
+        color: "#00FF09", 
+        image: "https://rizzexr.github.io/Rizzexr/Zabroshki/images/22.jpg",
+        guarded: "Нет",
+        difficulty: "1/3"
     },
     // { 
     //     lat: , 
